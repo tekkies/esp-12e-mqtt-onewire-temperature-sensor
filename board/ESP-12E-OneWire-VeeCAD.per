@@ -6,8 +6,8 @@ File,19
   "NetImportFormat" : "Protel"
 },
 "Board" : {
-  "Width" : 50,
-  "Height" : 50,
+  "Width" : 21,
+  "Height" : 10,
   "Pattern" : "Strip"
 },
 "CelledOutlines" : [
@@ -54,37 +54,57 @@ File,19
 "Components" : [
   { "Designator" : "J2", "Value" : "", "Outline" : "SIP8",
   "X1000" : 11000, "Y1000" : 0, "EndDeltaX" : 0, "EndDeltaY" : 1,
-  "Text" : { "X" : 0, "Y" : 0, "Angle" : 0, "Visible" : true },
+  "Text" : { "X" : -1, "Y" : 0, "Angle" : 0, "Visible" : true },
   "Group" : 0
   },
   { "Designator" : "J1", "Value" : "", "Outline" : "SIP8",
   "X1000" : 0, "Y1000" : 0, "EndDeltaX" : 0, "EndDeltaY" : 1,
-  "Text" : { "X" : 0, "Y" : 0, "Angle" : 0, "Visible" : true },
+  "Text" : { "X" : 1, "Y" : 0, "Angle" : 0, "Visible" : true },
   "Group" : 0
   },
   { "Designator" : "J4", "Value" : "Power", "Outline" : "SIP4",
-  "X1000" : 13000, "Y1000" : 19000, "EndDeltaX" : -1, "EndDeltaY" : 0,
+  "X1000" : 15000, "Y1000" : 7000, "EndDeltaX" : 0, "EndDeltaY" : -1,
   "Text" : { "X" : 0, "Y" : -1, "Angle" : 0, "Visible" : true },
   "Group" : 0
   },
   { "Designator" : "J3", "Value" : "DS18xx", "Outline" : "SIP3",
-  "X1000" : 19000, "Y1000" : 5000, "EndDeltaX" : 0, "EndDeltaY" : 1,
+  "X1000" : 15000, "Y1000" : 1000, "EndDeltaX" : 0, "EndDeltaY" : 1,
   "Text" : { "X" : 0, "Y" : -1, "Angle" : 0, "Visible" : true },
   "Group" : 0
   },
   { "Designator" : "R1", "Value" : "4K7", "Outline" : "AX3_1",
-  "X1000" : 47000, "Y1000" : 43000, "EndDeltaX" : 0, "EndDeltaY" : 5,
+  "X1000" : 7000, "Y1000" : 2000, "EndDeltaX" : 0, "EndDeltaY" : 4,
   "Text" : { "X" : 0, "Y" : -1, "Angle" : 0, "Visible" : true },
   "Group" : 0
   }
 ],
 "Links" : [
+  { "X" : 5, "Y" : 7, "EndDeltaX" : 0, "EndDeltaY" : 1, "Group" : 0 },
+  { "X" : 8, "Y" : 3, "EndDeltaX" : 0, "EndDeltaY" : 3, "Group" : 0 },
+  { "X" : 13, "Y" : 1, "EndDeltaX" : 0, "EndDeltaY" : 6, "Group" : 0 },
+  { "X" : 14, "Y" : 5, "EndDeltaX" : 0, "EndDeltaY" : 3, "Group" : 0 }
 ],
 "Breaks" : [
+  { "X" : 6, "Y" : 7, "Shift" : "none", "Group" : 0 },
+  { "X" : 6, "Y" : 6, "Shift" : "none", "Group" : 0 },
+  { "X" : 6, "Y" : 5, "Shift" : "none", "Group" : 0 },
+  { "X" : 6, "Y" : 4, "Shift" : "none", "Group" : 0 },
+  { "X" : 6, "Y" : 3, "Shift" : "none", "Group" : 0 },
+  { "X" : 6, "Y" : 2, "Shift" : "none", "Group" : 0 },
+  { "X" : 6, "Y" : 1, "Shift" : "none", "Group" : 0 },
+  { "X" : 6, "Y" : 0, "Shift" : "none", "Group" : 0 },
+  { "X" : 9, "Y" : 6, "Shift" : "none", "Group" : 0 },
+  { "X" : 12, "Y" : 1, "Shift" : "none", "Group" : 0 },
+  { "X" : 12, "Y" : 5, "Shift" : "none", "Group" : 0 },
+  { "X" : 12, "Y" : 6, "Shift" : "none", "Group" : 0 },
+  { "X" : 12, "Y" : 4, "Shift" : "none", "Group" : 0 }
 ],
 "Wires" : [
 ],
 "Text" : [
+    { "Value" : "https:\/\/tinyurl.com\/esp12e-ds18", "X" : 8, "Y" : 9, "Angle" : 0, "Size" : "Small", "Group" : 0 },
+    { "Value" : "0v", "X" : 16, "Y" : 7, "Angle" : 0, "Size" : "Small", "Group" : 0 },
+    { "Value" : "3.3-3.6v", "X" : 18, "Y" : 5, "Angle" : 0, "Size" : "Small", "Group" : 0 }
 ],
 "Nets" : [
     { "Node" : "N000001", "Components" : [
