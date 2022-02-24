@@ -6,11 +6,28 @@
 #include "secrets.h"
 
 
-void setup() {
+void state1()
+{
+  Serial.println("state1() called");  
+}
 
+void setup() {
+  Serial.begin(115200);
+  Serial.println("setup");  
 }
 
 void loop() {
+  Serial.println("loop");  
+
+    void (*fcnPtr)();
+    fcnPtr = &state1;
+
+    (*fcnPtr)();
+
+
+
+
+
 
 }
 
