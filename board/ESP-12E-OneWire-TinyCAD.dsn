@@ -39,7 +39,7 @@ download the executable.-->
 			<CHARSET>0</CHARSET>
 			<FACENAME>Arial</FACENAME>
 		</FONT>
-		<FONT id='5'>
+		<FONT id='4'>
 			<HEIGHT>-133</HEIGHT>
 			<WIDTH>59</WIDTH>
 			<WEIGHT>400</WEIGHT>
@@ -49,7 +49,7 @@ download the executable.-->
 			<CHARSET>0</CHARSET>
 			<FACENAME>Arial</FACENAME>
 		</FONT>
-		<FONT id='6'>
+		<FONT id='5'>
 			<HEIGHT>-19</HEIGHT>
 			<WIDTH>8</WIDTH>
 			<WEIGHT>400</WEIGHT>
@@ -849,6 +849,55 @@ K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@
 				<RECTANGLE a='20.00000,24.00000' b='22.00000,28.00000' style='2' fill='0'/>
 			</TinyCAD>
 		</SYMBOLDEF>
+		<SYMBOLDEF id='6'>
+			<NAME type='0'>1N400x</NAME>
+			<REF type='0'>D?</REF>
+			<DESCRIPTION>1A Diode</DESCRIPTION>
+			<PPP>1</PPP>
+			<GUID></GUID>
+			<FIELD>
+				<NAME>$$SPICE_PROLOG_PRIORITY</NAME>
+				<DEFAULT>5</DEFAULT>
+				<FT>000002</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>$$SPICE_EPILOG_PRIORITY</NAME>
+				<DEFAULT>5</DEFAULT>
+				<FT>000002</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>Package</NAME>
+				<DEFAULT>AX3_1</DEFAULT>
+				<FT>000001</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<REF_POINT power='0' part='0' pos='24.00000,33.00000'/>
+			<TinyCAD>
+				<PIN pos='22.00000,23.00000' which='0' elec='4' direction='1' part='0' number='2' show='2' length='15' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='22.00000,32.00000' which='0' elec='4' direction='0' part='0' number='1' show='2' length='15' number_pos='0' centre_name='0'></PIN>
+				<POLYGON pos='20.40000,26.00000' style='2' fill='0' polygon='0'>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+					<POINT pos='3.20000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='20.40000,29.00000' style='2' fill='0' polygon='0'>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+					<POINT pos='3.20000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='22.00000,26.00000' style='2' fill='0' polygon='0'>
+					<POINT pos='1.60000,0.00000' arc='0'/>
+					<POINT pos='0.00000,3.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='20.40000,26.00000' style='2' fill='0' polygon='0'>
+					<POINT pos='1.60000,3.00000' arc='0'/>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+				</POLYGON>
+			</TinyCAD>
+		</SYMBOLDEF>
 		<OPTIONS>
 			<GRID>1</GRID>
 			<UNITS>0</UNITS>
@@ -888,7 +937,7 @@ K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@
 			<FIELD type='1' description='Package' value='SIP8' show='0' pos='1.00000,-19.20000'/>
 			<HINT pin='1' net='99'/>
 			<HINT pin='2' net='57'/>
-			<HINT pin='3' net='99'/>
+			<HINT pin='3' net='159'/>
 			<HINT pin='4' net='153'/>
 			<HINT pin='5' net='120'/>
 			<HINT pin='6' net='119'/>
@@ -907,11 +956,11 @@ K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@
 			<HINT pin='3' net='3'/>
 			<HINT pin='4' net='85'/>
 		</SYMBOL>
-		<TEXT pos='36.00000,58.00000' direction='3' font='6' color='0000FF'>Pin 0=GND, Pin 3=3.0-3.6V</TEXT>
+		<TEXT pos='36.00000,58.00000' direction='3' font='5' color='0000FF'>Pin 0=GND, Pin 3=3.0-3.6V</TEXT>
 		<WIRE a='56.00000,39.00000' b='56.00000,46.00000'/>
 		<WIRE a='56.00000,46.00000' b='30.00000,46.00000'/>
 		<WIRE a='30.00000,46.00000' b='30.00000,50.00000'/>
-		<TEXT pos='78.00000,44.00000' direction='3' font='5' color='000000'>D</TEXT>
+		<TEXT pos='78.00000,44.00000' direction='3' font='4' color='000000'>D</TEXT>
 		<SYMBOL id='4' pos='92.00000,34.00000' part='0' rotate='0' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
 			<FIELD type='0' description='Ref' value='J3' show='1' pos='-7.00000,0.40000'/>
 			<FIELD type='0' description='Name' value='DS18xx' show='1' pos='-9.00000,-10.00000'/>
@@ -966,6 +1015,14 @@ K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@
 		<JUNCTION pos='64.00000,34.00000'/>
 		<WIRE a='6.00000,18.00000' b='2.00000,18.00000'/>
 		<WIRE a='6.00000,27.00000' b='2.00000,27.00000'/>
-		<WIRE a='2.00000,27.00000' b='2.00000,18.00000'/>
+		<SYMBOL id='6' pos='4.00000,28.00000' part='0' rotate='0' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
+			<FIELD type='0' description='Ref' value='D1' show='1' pos='-3.00000,-11.60000'/>
+			<FIELD type='0' description='Name' value='1N400x' show='1' pos='-3.00000,-14.00000'/>
+			<FIELD type='2' description='$$SPICE_PROLOG_PRIORITY' value='5' show='0' pos='0.00000,0.00000'/>
+			<FIELD type='2' description='$$SPICE_EPILOG_PRIORITY' value='5' show='0' pos='0.00000,0.00000'/>
+			<FIELD type='1' description='Package' value='AX3_1' show='0' pos='1.00000,-3.20000'/>
+			<HINT pin='1' net='153'/>
+			<HINT pin='2' net='99'/>
+		</SYMBOL>
 	</TinyCAD>
 </TinyCADSheets>
