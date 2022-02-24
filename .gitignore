@@ -1,2 +1,4 @@
 /board/*.autosave
 /bin
+/src/esp-12e-mqtt-onewire-temperature-sensor/secrets.h
+/src/esp-12e-mqtt-onewire-temperature-sensor/config.h
