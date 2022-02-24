@@ -8,6 +8,9 @@
 class IState {
   public: 
     String stateName;
+    IState(String name) {
+      stateName = name;
+    }
     virtual void execute() {
       Serial.println(stateName);
     }
@@ -17,16 +20,19 @@ IState *state;
 
 class State1 : IState {
   public: 
+    State1(String name) : IState(name) {
+
+    }
     void execute() {
       IState::execute();
     }
 };
-
 class State2 : IState {
   public: 
-    State2(String name) {
-      stateName = name;
+    State2(String name) : IState(name) {
+
     }
+
     void execute() {
       IState::execute();
     }
@@ -34,11 +40,17 @@ class State2 : IState {
 
 
 
-#define CREATESTATE(state) 
+#define DECLARESTATE(aState) (IState*)(new aState(#aState))
+
+IState *states[] = 
+{
+  DECLARESTATE(State1),
+  DECLARESTATE(State2)
+};
 
 
 void setup() {
-  state = (IState*)(new State2("State2a"));
+  state = states[0];
   Serial.begin(115200);
   Serial.println("setup");  
 }
