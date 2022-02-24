@@ -1017,7 +1017,7 @@ K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@
 		<WIRE a='6.00000,27.00000' b='2.00000,27.00000'/>
 		<SYMBOL id='6' pos='4.00000,28.00000' part='0' rotate='0' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
 			<FIELD type='0' description='Ref' value='D1' show='1' pos='-3.00000,-11.60000'/>
-			<FIELD type='0' description='Name' value='1N400x' show='1' pos='-3.00000,-14.00000'/>
+			<FIELD type='0' description='Name' value='1N4007' show='1' pos='-3.00000,-14.00000'/>
 			<FIELD type='2' description='$$SPICE_PROLOG_PRIORITY' value='5' show='0' pos='0.00000,0.00000'/>
 			<FIELD type='2' description='$$SPICE_EPILOG_PRIORITY' value='5' show='0' pos='0.00000,0.00000'/>
 			<FIELD type='1' description='Package' value='AX3_1' show='0' pos='1.00000,-3.20000'/>
