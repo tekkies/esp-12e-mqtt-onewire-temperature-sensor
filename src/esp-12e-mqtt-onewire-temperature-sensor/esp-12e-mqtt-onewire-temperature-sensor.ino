@@ -1,3 +1,10 @@
+#include <ESP8266WiFi.h>
+#include "src\arduino-mqtt\MQTT.h"
+#include "src\OneWire\OneWire.h"
+
+#include "config.h"
+#include "secrets.h"
+
 
 void setup() {
 
@@ -17,12 +24,6 @@ void loop() {
 // //
 // // by Joël Gähwiler
 // // https://github.com/256dpi/arduino-mqtt
-
-// #include <ESP8266WiFi.h>
-// #include "src\arduino-mqtt\MQTT.h"
-
-// #include "config.h"
-// #include "secrets.h"
 
 
 // WiFiClient net;
@@ -97,8 +98,6 @@ void loop() {
 
 // // Based on OneWire DS18S20, DS18B20, DS1822 Temperature Example
 
-// #include <ESP8266WiFi.h>
-// #include "src\OneWire\OneWire.h"
 
 
 // //
