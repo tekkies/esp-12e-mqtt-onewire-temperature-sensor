@@ -54,12 +54,12 @@ File,19
 "Components" : [
   { "Designator" : "J2", "Value" : "", "Outline" : "SIP8",
   "X1000" : 11000, "Y1000" : 0, "EndDeltaX" : 0, "EndDeltaY" : 1,
-  "Text" : { "X" : -1, "Y" : 0, "Angle" : 0, "Visible" : true },
+  "Text" : { "X" : 0, "Y" : -1, "Angle" : 0, "Visible" : true },
   "Group" : 0
   },
   { "Designator" : "J1", "Value" : "", "Outline" : "SIP8",
   "X1000" : 0, "Y1000" : 0, "EndDeltaX" : 0, "EndDeltaY" : 1,
-  "Text" : { "X" : 1, "Y" : 0, "Angle" : 0, "Visible" : true },
+  "Text" : { "X" : 0, "Y" : -1, "Angle" : 0, "Visible" : true },
   "Group" : 0
   },
   { "Designator" : "J4", "Value" : "Power", "Outline" : "SIP4",
@@ -82,7 +82,8 @@ File,19
   { "X" : 5, "Y" : 7, "EndDeltaX" : 0, "EndDeltaY" : 1, "Group" : 0 },
   { "X" : 8, "Y" : 3, "EndDeltaX" : 0, "EndDeltaY" : 3, "Group" : 0 },
   { "X" : 13, "Y" : 1, "EndDeltaX" : 0, "EndDeltaY" : 6, "Group" : 0 },
-  { "X" : 14, "Y" : 5, "EndDeltaX" : 0, "EndDeltaY" : 3, "Group" : 0 }
+  { "X" : 14, "Y" : 5, "EndDeltaX" : 0, "EndDeltaY" : 3, "Group" : 0 },
+  { "X" : 5, "Y" : 0, "EndDeltaX" : 0, "EndDeltaY" : 3, "Group" : 0 }
 ],
 "Breaks" : [
   { "X" : 6, "Y" : 7, "Shift" : "none", "Group" : 0 },
@@ -126,6 +127,9 @@ File,19
     { "Name" : "J2", "Pins" : ["3"] },
     { "Name" : "J3", "Pins" : ["2"] },
     { "Name" : "R1", "Pins" : ["1"] }
+    ] },
+    { "Node" : "N000153", "Components" : [
+    { "Name" : "J1", "Pins" : ["1", "4"] }
     ] }
 ],
 "NetColors" : [

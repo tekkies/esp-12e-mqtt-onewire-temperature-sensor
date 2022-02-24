@@ -19,16 +19,6 @@ download the executable.-->
 			<DATE></DATE>
 			<GRID spacing='100.00000' snap='1'/>
 		</DETAILS>
-		<FONT id='0'>
-			<HEIGHT>-13</HEIGHT>
-			<WIDTH>6</WIDTH>
-			<WEIGHT>400</WEIGHT>
-			<ITALIC>0</ITALIC>
-			<UNDERLINE>0</UNDERLINE>
-			<STRIKEOUT>0</STRIKEOUT>
-			<CHARSET>0</CHARSET>
-			<FACENAME>Arial</FACENAME>
-		</FONT>
 		<FONT id='1'>
 			<HEIGHT>-10</HEIGHT>
 			<WIDTH>0</WIDTH>
@@ -39,7 +29,7 @@ download the executable.-->
 			<CHARSET>0</CHARSET>
 			<FACENAME>Arial</FACENAME>
 		</FONT>
-		<FONT id='4'>
+		<FONT id='3'>
 			<HEIGHT>-13</HEIGHT>
 			<WIDTH>6</WIDTH>
 			<WEIGHT>400</WEIGHT>
@@ -49,7 +39,7 @@ download the executable.-->
 			<CHARSET>0</CHARSET>
 			<FACENAME>Arial</FACENAME>
 		</FONT>
-		<FONT id='8'>
+		<FONT id='5'>
 			<HEIGHT>-133</HEIGHT>
 			<WIDTH>59</WIDTH>
 			<WEIGHT>400</WEIGHT>
@@ -59,7 +49,7 @@ download the executable.-->
 			<CHARSET>0</CHARSET>
 			<FACENAME>Arial</FACENAME>
 		</FONT>
-		<FONT id='10'>
+		<FONT id='6'>
 			<HEIGHT>-19</HEIGHT>
 			<WIDTH>8</WIDTH>
 			<WEIGHT>400</WEIGHT>
@@ -78,7 +68,7 @@ download the executable.-->
 			<INDEX>-1</INDEX>
 			<COLOR>000000</COLOR>
 		</FILL>
-		<IMAGE id='6' type='PNG'>
+		<IMAGE id='1' type='PNG'>
 			<UUENCODE size='26593'>
 MB5!.1PT*&amp;@H    -24A$4@   XP   -0&quot; ,   !4Z!&#039;$   # %!,5$4   #0
 MGV!PGY\$ A+____0__\OG]4_C\_O_^____#__\#0_^___^___^#__]_P___?
@@ -673,87 +663,87 @@ M;#1D&amp;1?S/ET L(&lt;)M(P @+R!C  8 F0$P! @(P&quot;&amp; !D!, 3(&quot;( A0$8 # 
 K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@  
 </UUENCODE>
 		</IMAGE>
+		<SYMBOLDEF id='1'>
+			<NAME type='0'>Conn_8</NAME>
+			<REF type='0'>J?</REF>
+			<DESCRIPTION>Connector 8 pin</DESCRIPTION>
+			<PPP>1</PPP>
+			<GUID></GUID>
+			<FIELD>
+				<NAME>$$SPICE_PROLOG_PRIORITY</NAME>
+				<DEFAULT>5</DEFAULT>
+				<FT>000002</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>$$SPICE_EPILOG_PRIORITY</NAME>
+				<DEFAULT>5</DEFAULT>
+				<FT>000002</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>Package</NAME>
+				<DEFAULT>SIP8</DEFAULT>
+				<FT>000001</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<REF_POINT power='0' part='0' pos='28.00000,46.00000'/>
+			<TinyCAD>
+				<RECTANGLE a='24.00000,20.00000' b='28.00000,45.00000' style='2' fill='0'/>
+				<PIN pos='20.00000,22.00000' which='0' elec='0' direction='3' part='0' number='1' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='20.00000,25.00000' which='0' elec='0' direction='3' part='0' number='2' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='20.00000,28.00000' which='0' elec='0' direction='3' part='0' number='3' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='20.00000,31.00000' which='0' elec='0' direction='3' part='0' number='4' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='20.00000,34.00000' which='0' elec='0' direction='3' part='0' number='5' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='20.00000,37.00000' which='0' elec='0' direction='3' part='0' number='6' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='20.00000,40.00000' which='0' elec='0' direction='3' part='0' number='7' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='20.00000,43.00000' which='0' elec='0' direction='3' part='0' number='8' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+			</TinyCAD>
+		</SYMBOLDEF>
+		<SYMBOLDEF id='2'>
+			<NAME type='0'>Conn_8</NAME>
+			<REF type='0'>J?</REF>
+			<DESCRIPTION>Connector 8 pin</DESCRIPTION>
+			<PPP>1</PPP>
+			<GUID></GUID>
+			<FIELD>
+				<NAME>$$SPICE_PROLOG_PRIORITY</NAME>
+				<DEFAULT>5</DEFAULT>
+				<FT>000002</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>$$SPICE_EPILOG_PRIORITY</NAME>
+				<DEFAULT>5</DEFAULT>
+				<FT>000002</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>Package</NAME>
+				<DEFAULT>SIP8</DEFAULT>
+				<FT>000001</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<REF_POINT power='0' part='0' pos='28.00000,46.00000'/>
+			<TinyCAD>
+				<RECTANGLE a='24.00000,20.00000' b='28.00000,45.00000' style='2' fill='0'/>
+				<PIN pos='20.00000,22.00000' which='0' elec='0' direction='3' part='0' number='1' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='20.00000,25.00000' which='0' elec='0' direction='3' part='0' number='2' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='20.00000,28.00000' which='0' elec='0' direction='3' part='0' number='3' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='20.00000,31.00000' which='0' elec='0' direction='3' part='0' number='4' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='20.00000,34.00000' which='0' elec='0' direction='3' part='0' number='5' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='20.00000,37.00000' which='0' elec='0' direction='3' part='0' number='6' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='20.00000,40.00000' which='0' elec='0' direction='3' part='0' number='7' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='20.00000,43.00000' which='0' elec='0' direction='3' part='0' number='8' show='3' length='30' number_pos='0' centre_name='0'></PIN>
+			</TinyCAD>
+		</SYMBOLDEF>
 		<SYMBOLDEF id='3'>
-			<NAME type='0'>Conn_8</NAME>
-			<REF type='0'>J?</REF>
-			<DESCRIPTION>Connector 8 pin</DESCRIPTION>
-			<PPP>1</PPP>
-			<GUID></GUID>
-			<FIELD>
-				<NAME>$$SPICE_PROLOG_PRIORITY</NAME>
-				<DEFAULT>5</DEFAULT>
-				<FT>000002</FT>
-				<VALUE></VALUE>
-				<POS>0.00000,0.00000</POS>
-			</FIELD>
-			<FIELD>
-				<NAME>$$SPICE_EPILOG_PRIORITY</NAME>
-				<DEFAULT>5</DEFAULT>
-				<FT>000002</FT>
-				<VALUE></VALUE>
-				<POS>0.00000,0.00000</POS>
-			</FIELD>
-			<FIELD>
-				<NAME>Package</NAME>
-				<DEFAULT>SIP8</DEFAULT>
-				<FT>000001</FT>
-				<VALUE></VALUE>
-				<POS>0.00000,0.00000</POS>
-			</FIELD>
-			<REF_POINT power='0' part='0' pos='28.00000,46.00000'/>
-			<TinyCAD>
-				<RECTANGLE a='24.00000,20.00000' b='28.00000,45.00000' style='2' fill='0'/>
-				<PIN pos='20.00000,22.00000' which='0' elec='0' direction='3' part='0' number='1' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-				<PIN pos='20.00000,25.00000' which='0' elec='0' direction='3' part='0' number='2' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-				<PIN pos='20.00000,28.00000' which='0' elec='0' direction='3' part='0' number='3' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-				<PIN pos='20.00000,31.00000' which='0' elec='0' direction='3' part='0' number='4' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-				<PIN pos='20.00000,34.00000' which='0' elec='0' direction='3' part='0' number='5' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-				<PIN pos='20.00000,37.00000' which='0' elec='0' direction='3' part='0' number='6' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-				<PIN pos='20.00000,40.00000' which='0' elec='0' direction='3' part='0' number='7' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-				<PIN pos='20.00000,43.00000' which='0' elec='0' direction='3' part='0' number='8' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-			</TinyCAD>
-		</SYMBOLDEF>
-		<SYMBOLDEF id='5'>
-			<NAME type='0'>Conn_8</NAME>
-			<REF type='0'>J?</REF>
-			<DESCRIPTION>Connector 8 pin</DESCRIPTION>
-			<PPP>1</PPP>
-			<GUID></GUID>
-			<FIELD>
-				<NAME>$$SPICE_PROLOG_PRIORITY</NAME>
-				<DEFAULT>5</DEFAULT>
-				<FT>000002</FT>
-				<VALUE></VALUE>
-				<POS>0.00000,0.00000</POS>
-			</FIELD>
-			<FIELD>
-				<NAME>$$SPICE_EPILOG_PRIORITY</NAME>
-				<DEFAULT>5</DEFAULT>
-				<FT>000002</FT>
-				<VALUE></VALUE>
-				<POS>0.00000,0.00000</POS>
-			</FIELD>
-			<FIELD>
-				<NAME>Package</NAME>
-				<DEFAULT>SIP8</DEFAULT>
-				<FT>000001</FT>
-				<VALUE></VALUE>
-				<POS>0.00000,0.00000</POS>
-			</FIELD>
-			<REF_POINT power='0' part='0' pos='28.00000,46.00000'/>
-			<TinyCAD>
-				<RECTANGLE a='24.00000,20.00000' b='28.00000,45.00000' style='2' fill='0'/>
-				<PIN pos='20.00000,22.00000' which='0' elec='0' direction='3' part='0' number='1' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-				<PIN pos='20.00000,25.00000' which='0' elec='0' direction='3' part='0' number='2' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-				<PIN pos='20.00000,28.00000' which='0' elec='0' direction='3' part='0' number='3' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-				<PIN pos='20.00000,31.00000' which='0' elec='0' direction='3' part='0' number='4' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-				<PIN pos='20.00000,34.00000' which='0' elec='0' direction='3' part='0' number='5' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-				<PIN pos='20.00000,37.00000' which='0' elec='0' direction='3' part='0' number='6' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-				<PIN pos='20.00000,40.00000' which='0' elec='0' direction='3' part='0' number='7' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-				<PIN pos='20.00000,43.00000' which='0' elec='0' direction='3' part='0' number='8' show='3' length='30' number_pos='0' centre_name='0'></PIN>
-			</TinyCAD>
-		</SYMBOLDEF>
-		<SYMBOLDEF id='9'>
 			<NAME type='0'>Conn_4</NAME>
 			<REF type='0'>J?</REF>
 			<DESCRIPTION>Connector 4 Pin</DESCRIPTION>
@@ -790,7 +780,7 @@ K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@
 				<PIN pos='20.00000,31.00000' which='0' elec='0' direction='3' part='0' number='4' show='3' length='30' number_pos='0' centre_name='0'></PIN>
 			</TinyCAD>
 		</SYMBOLDEF>
-		<SYMBOLDEF id='10'>
+		<SYMBOLDEF id='4'>
 			<NAME type='0'>Conn_3</NAME>
 			<REF type='0'>J?</REF>
 			<DESCRIPTION>Connector 3 Pin</DESCRIPTION>
@@ -825,7 +815,7 @@ K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@
 				<RECTANGLE a='34.00000,22.00000' b='38.00000,32.00000' style='2' fill='0'/>
 			</TinyCAD>
 		</SYMBOLDEF>
-		<SYMBOLDEF id='11'>
+		<SYMBOLDEF id='5'>
 			<NAME type='0'>R</NAME>
 			<REF type='0'>R?</REF>
 			<DESCRIPTION>Resistor</DESCRIPTION>
@@ -875,7 +865,7 @@ K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@
 			<COLOR_NOTETEXT_LINE>FF0000</COLOR_NOTETEXT_LINE>
 			<COLOR_NOTETEXT_TEXT>FF0000</COLOR_NOTETEXT_TEXT>
 		</OPTIONS>
-		<SYMBOL id='3' pos='56.00000,42.00000' part='0' rotate='4' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
+		<SYMBOL id='1' pos='56.00000,42.00000' part='0' rotate='4' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
 			<FIELD type='0' description='Ref' value='J2' show='1' pos='-5.00000,-25.60000'/>
 			<FIELD type='0' description='Name' value='' show='1' pos='1.00000,-24.00000'/>
 			<FIELD type='2' description='$$SPICE_PROLOG_PRIORITY' value='5' show='0' pos='0.00000,0.00000'/>
@@ -890,7 +880,7 @@ K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@
 			<HINT pin='7' net='117'/>
 			<HINT pin='8' net='1'/>
 		</SYMBOL>
-		<SYMBOL id='5' pos='14.00000,42.00000' part='0' rotate='0' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
+		<SYMBOL id='2' pos='14.00000,42.00000' part='0' rotate='0' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
 			<FIELD type='0' description='Ref' value='J1' show='1' pos='-5.00000,-25.60000'/>
 			<FIELD type='0' description='Name' value='' show='1' pos='1.00000,-24.00000'/>
 			<FIELD type='2' description='$$SPICE_PROLOG_PRIORITY' value='5' show='0' pos='0.00000,0.00000'/>
@@ -898,15 +888,15 @@ K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@
 			<FIELD type='1' description='Package' value='SIP8' show='0' pos='1.00000,-19.20000'/>
 			<HINT pin='1' net='99'/>
 			<HINT pin='2' net='57'/>
-			<HINT pin='3' net='166'/>
+			<HINT pin='3' net='99'/>
 			<HINT pin='4' net='153'/>
 			<HINT pin='5' net='120'/>
 			<HINT pin='6' net='119'/>
 			<HINT pin='7' net='118'/>
 			<HINT pin='8' net='3'/>
 		</SYMBOL>
-		<TEXT pos='2.00000,64.00000' direction='3' font='0' color='000000'>https://github.com/tekkies/esp-12e-mqtt-onewire-temperature-sensor</TEXT>
-		<SYMBOL id='9' pos='32.00000,58.00000' part='0' rotate='3' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
+		<TEXT pos='2.00000,64.00000' direction='3' font='3' color='000000'>https://github.com/tekkies/esp-12e-mqtt-onewire-temperature-sensor</TEXT>
+		<SYMBOL id='3' pos='32.00000,58.00000' part='0' rotate='3' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
 			<FIELD type='0' description='Ref' value='J4' show='1' pos='-14.00000,2.00000'/>
 			<FIELD type='0' description='Name' value='Power' show='1' pos='-6.00000,2.00000'/>
 			<FIELD type='2' description='$$SPICE_PROLOG_PRIORITY' value='5' show='0' pos='0.00000,0.00000'/>
@@ -917,12 +907,12 @@ K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@
 			<HINT pin='3' net='3'/>
 			<HINT pin='4' net='85'/>
 		</SYMBOL>
-		<TEXT pos='36.00000,58.00000' direction='3' font='10' color='0000FF'>Pin 0=GND, Pin 3=3.0-3.6V</TEXT>
+		<TEXT pos='36.00000,58.00000' direction='3' font='6' color='0000FF'>Pin 0=GND, Pin 3=3.0-3.6V</TEXT>
 		<WIRE a='56.00000,39.00000' b='56.00000,46.00000'/>
 		<WIRE a='56.00000,46.00000' b='30.00000,46.00000'/>
 		<WIRE a='30.00000,46.00000' b='30.00000,50.00000'/>
-		<TEXT pos='78.00000,44.00000' direction='3' font='8' color='000000'>D</TEXT>
-		<SYMBOL id='10' pos='92.00000,34.00000' part='0' rotate='0' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
+		<TEXT pos='78.00000,44.00000' direction='3' font='5' color='000000'>D</TEXT>
+		<SYMBOL id='4' pos='92.00000,34.00000' part='0' rotate='0' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
 			<FIELD type='0' description='Ref' value='J3' show='1' pos='-7.00000,0.40000'/>
 			<FIELD type='0' description='Name' value='DS18xx' show='1' pos='-9.00000,-10.00000'/>
 			<FIELD type='2' description='$$SPICE_PROLOG_PRIORITY' value='5' show='0' pos='0.00000,0.00000'/>
@@ -940,7 +930,7 @@ K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@
 		<WIRE a='72.00000,24.00000' b='72.00000,29.00000'/>
 		<WIRE a='56.00000,27.00000' b='60.00000,27.00000'/>
 		<WIRE a='60.00000,27.00000' b='60.00000,34.00000'/>
-		<SYMBOL id='11' pos='66.00000,34.00000' part='0' rotate='0' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
+		<SYMBOL id='5' pos='66.00000,34.00000' part='0' rotate='0' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
 			<FIELD type='0' description='Ref' value='R1' show='1' pos='-1.00000,-5.60000'/>
 			<FIELD type='0' description='Name' value='4K7' show='1' pos='-1.00000,-2.00000'/>
 			<FIELD type='2' description='$$SPICE_PROLOG_PRIORITY' value='5' show='0' pos='0.00000,0.00000'/>
@@ -960,7 +950,6 @@ K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@
 		<NOCONNECT pos='6.00000,18.00000'/>
 		<NOCONNECT pos='6.00000,21.00000'/>
 		<NOCONNECT pos='6.00000,24.00000'/>
-		<NOCONNECT pos='6.00000,27.00000'/>
 		<NOCONNECT pos='21.00000,50.00000'/>
 		<NOCONNECT pos='27.00000,50.00000'/>
 		<NOCONNECT pos='56.00000,36.00000'/>
@@ -971,9 +960,12 @@ K F (D!$ 0X&quot;, !@&quot;9 3 $&quot; C (;P_P/..P*] GKHO@    !)14Y$KD)@@@
 		<NOCONNECT pos='6.00000,30.00000'/>
 		<NOCONNECT pos='56.00000,18.00000'/>
 		<NOCONNECT pos='56.00000,21.00000'/>
-		<METAFILE a='12.00000,8.00000' b='50.00000,41.20000' id='6'/>
+		<METAFILE a='12.00000,8.00000' b='50.00000,41.20000' id='1'/>
 		<JUNCTION pos='64.00000,24.00000'/>
 		<JUNCTION pos='56.00000,39.00000'/>
 		<JUNCTION pos='64.00000,34.00000'/>
+		<WIRE a='6.00000,18.00000' b='2.00000,18.00000'/>
+		<WIRE a='6.00000,27.00000' b='2.00000,27.00000'/>
+		<WIRE a='2.00000,27.00000' b='2.00000,18.00000'/>
 	</TinyCAD>
 </TinyCADSheets>
