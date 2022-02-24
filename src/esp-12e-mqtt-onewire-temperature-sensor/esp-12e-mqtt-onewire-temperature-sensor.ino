@@ -6,15 +6,40 @@
 #include "secrets.h"
 
 
-void state1()
-{
+class IState {
+  public: 
+    virtual void execute() {
+
+    }
+};
+
+class State2 : IState {
+  public: 
+    void execute() {
+      IState::execute();
+      Serial.println("State2");      
+    }
+};
+
+
+void state1() {
   Serial.println("state1() called");  
 }
 
+
+
+
+IState *state;
+
+
 void setup() {
+  state = (IState*)(new State2());
   Serial.begin(115200);
   Serial.println("setup");  
 }
+
+
+
 
 void loop() {
   Serial.println("loop");  
@@ -24,10 +49,7 @@ void loop() {
 
     (*fcnPtr)();
 
-
-
-
-
+    state->execute();
 
 }
 
