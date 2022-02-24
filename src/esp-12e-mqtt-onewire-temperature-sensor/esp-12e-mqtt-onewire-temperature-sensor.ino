@@ -5,35 +5,40 @@
 #include "config.h"
 #include "secrets.h"
 
-
 class IState {
   public: 
+    String stateName;
     virtual void execute() {
+      Serial.println(stateName);
+    }
+};
 
+IState *state;
+
+class State1 : IState {
+  public: 
+    void execute() {
+      IState::execute();
     }
 };
 
 class State2 : IState {
   public: 
+    State2(String name) {
+      stateName = name;
+    }
     void execute() {
       IState::execute();
-      Serial.println("State2");      
     }
 };
 
 
-void state1() {
-  Serial.println("state1() called");  
-}
 
-
-
-
-IState *state;
+#define CREATESTATE(state) 
 
 
 void setup() {
-  state = (IState*)(new State2());
+  state = (IState*)(new State2("State2a"));
   Serial.begin(115200);
   Serial.println("setup");  
 }
@@ -43,14 +48,7 @@ void setup() {
 
 void loop() {
   Serial.println("loop");  
-
-    void (*fcnPtr)();
-    fcnPtr = &state1;
-
-    (*fcnPtr)();
-
-    state->execute();
-
+  state->execute();
 }
 
 
