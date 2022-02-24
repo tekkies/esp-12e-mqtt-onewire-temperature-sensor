@@ -16,29 +16,33 @@ class IState {
     }
 };
 
+
+IState* getState(String stateName);
+
+class State1;
+class State2;
+
 IState *state;
+
 
 class State1 : IState {
   public: 
-    State1(String name) : IState(name) {
-
-    }
+    State1(String name) : IState(name) {}
     void execute() {
       IState::execute();
+      state = getState("State2");
     }
 };
+
 class State2 : IState {
   public: 
-    State2(String name) : IState(name) {
-
-    }
+    State2(String name) : IState(name) {}
 
     void execute() {
       IState::execute();
+      state = getState("State1");
     }
 };
-
-
 
 #define DECLARESTATE(aState) (IState*)(new aState(#aState))
 
@@ -48,9 +52,20 @@ IState *states[] =
   DECLARESTATE(State2)
 };
 
+IState* getState(String stateName) {
+  IState* state;
+  for(int i=0;i<sizeof(states);i++) {
+    if(states[i]->stateName == stateName) {
+      state = states[i];
+      break;
+    }
+  }
+  return state;
+}
+
 
 void setup() {
-  state = states[0];
+  state = getState("State1");
   Serial.begin(115200);
   Serial.println("setup");  
 }
