@@ -41,6 +41,8 @@ class State2 : IState {
     void execute() {
       IState::execute();
       state = getState("State1");
+      Serial.println("Sleeping for 5 seconds");
+      ESP.deepSleep(5e6); 
     }
 };
 
