@@ -30,8 +30,6 @@ IState *state;
 
 
 class OneWireState : IState {
-    protected:
-      static OneWire *oneWire;  //Setup OneWire on GPIO5
     public:
       OneWireState(String name) : IState(name) {}
       void execute() {
@@ -53,12 +51,13 @@ class State2 : IState {
 
 
 
+OneWire *oneWire;  //Setup OneWire on GPIO5
 
 void InitOneWire::execute() {
   OneWireState::execute();
   pinMode(4, OUTPUT);
   digitalWrite(4,HIGH);
-  //oneWire = new OneWire(5);
+  oneWire = new OneWire(5);
   SET_STATE(State2);
 }
 
