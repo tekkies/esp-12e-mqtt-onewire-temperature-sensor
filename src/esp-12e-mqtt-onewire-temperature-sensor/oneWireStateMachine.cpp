@@ -6,12 +6,29 @@
 #include "oneWireStateMachine.h"
 
 
-OneWire *oneWire;
+OneWireContext *oneWireContext;
 
 void InitOneWire::execute() {
-  OneWireState::execute();
+  IState::execute();
   pinMode(4, OUTPUT);
   digitalWrite(4,HIGH);
-  oneWire = new OneWire(5);
+  oneWireContext = new OneWireContext();
+  oneWireContext->oneWire = new OneWire(5);
+  bool found = oneWireContext->oneWire->search(oneWireContext->addr);
+  if(found) {
+    SET_STATE(IdentifyOneWireDevice);    
+  } else {
+    SET_STATE(EndState);
+  }
+}
+
+void IdentifyOneWireDevice::execute() {
+  IState::execute();
+  
+  Serial.print("ROM =");
+  for(int i = 0; i < 8; i++) {
+    Serial.write(' ');
+     Serial.print(oneWireContext->addr[i], HEX);
+  }
   SET_STATE(EndState);
 }

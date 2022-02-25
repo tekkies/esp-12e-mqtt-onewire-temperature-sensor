@@ -1,22 +1,28 @@
 #ifndef oneWireStateMachine_h
 #define oneWireStateMachine_h
 
+#include "src\OneWire\OneWire.h"
 #include "stateMachine.h"
 
-class OneWireState : IState {
-    public:
-      OneWireState(String name) : IState(name) {}
-      void execute() {
-        IState::execute();
-      }  
+class OneWireContext {
+  public:
+    OneWire *oneWire;
+    byte data[12];
+    byte addr[8];
 };
 
-class InitOneWire : OneWireState {
+
+class InitOneWire : IState {
   public: 
-    InitOneWire(String name) : OneWireState(name) {}
+    InitOneWire(String name) : IState(name) {}
     void execute();
 };
 
+class IdentifyOneWireDevice : IState {
+  public: 
+    IdentifyOneWireDevice(String name) : IState(name) {}
+    void execute();
+};
 
 
 #endif

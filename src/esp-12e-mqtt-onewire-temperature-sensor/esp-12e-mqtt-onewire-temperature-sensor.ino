@@ -159,22 +159,14 @@ void loop() {
 //   byte i;
 //   byte present = 0;
 //   byte type_s;
-//   byte data[12];
-//   byte addr[8];
+
 //   float celsius, fahrenheit;
   
-//   if ( !ds.search(addr)) {
 //     Serial.println("No more addresses.");
 //     Serial.println();
 //     ds.reset_search();
 //     delay(250);
 //     return;
-//   }
-  
-//   Serial.print("ROM =");
-//   for( i = 0; i < 8; i++) {
-//     Serial.write(' ');
-//     Serial.print(addr[i], HEX);
 //   }
 
 //   if (OneWire::crc8(addr, 7) != addr[7]) {
