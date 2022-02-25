@@ -5,6 +5,10 @@
 #include "config.h"
 #include "secrets.h"
 
+
+
+String json;
+
 class IState {
   public: 
     String stateName;
@@ -17,59 +21,63 @@ class IState {
 };
 
 
-IState* getState(String stateName);
-
-class State1;
-class State2;
-
+IState* setState(String stateName, int sizeForTypeCheck);
 IState *state;
 
+#define SET_STATE(stateName) setState(#stateName, sizeof(stateName))
 
-class State1 : IState {
+class Start : IState {
   public: 
-    State1(String name) : IState(name) {}
-    void execute() {
-      IState::execute();
-      state = getState("State2");
-    }
+    Start(String name) : IState(name) {}
+    void execute();
 };
 
 class State2 : IState {
   public: 
     State2(String name) : IState(name) {}
 
-    void execute() {
-      IState::execute();
-      state = getState("State1");
-      Serial.println("Sleeping for 5 seconds");
-      ESP.deepSleep(5e6); 
-    }
+    void execute();
 };
+
+void Start::execute() {
+  IState::execute();
+  SET_STATE(State2);
+}
+
+void State2::execute() {
+  IState::execute();
+  Serial.println("Sleeping for 5 seconds");
+  ESP.deepSleep(5e6); 
+}
+
 
 #define DECLARESTATE(aState) (IState*)(new aState(#aState))
 
 IState *states[] = 
 {
-  DECLARESTATE(State1),
+  DECLARESTATE(Start),
   DECLARESTATE(State2)
 };
 
-IState* getState(String stateName) {
-  IState* state;
+IState* setState(String stateName, int sizeForTypeCheck) {
+  IState *candidateState;
   for(int i=0;i<sizeof(states);i++) {
     if(states[i]->stateName == stateName) {
-      state = states[i];
+      candidateState = states[i];
       break;
     }
   }
+  state = candidateState;
   return state;
 }
 
 
+
 void setup() {
-  state = getState("State1");
   Serial.begin(115200);
   Serial.println("setup");  
+  WiFi.begin(ssid, pass);
+  SET_STATE(Start);
 }
 
 
@@ -126,8 +134,6 @@ void loop() {
 // }
 
 // void setup() {
-//   Serial.begin(115200);
-//   WiFi.begin(ssid, pass);
 
 //   // Note: Local domain names (e.g. "Computer.local" on OSX) are not supported
 //   // by Arduino. You need to set the IP address directly.
