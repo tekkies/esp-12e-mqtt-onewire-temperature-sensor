@@ -26,21 +26,39 @@ IState *state;
 
 #define SET_STATE(stateName) setState(#stateName, sizeof(stateName))
 
-class Start : IState {
+
+
+
+class OneWireState : IState {
+    protected:
+      static OneWire *oneWire;  //Setup OneWire on GPIO5
+    public:
+      OneWireState(String name) : IState(name) {}
+      void execute() {
+        IState::execute();
+      }  
+};
+
+class InitOneWire : OneWireState {
   public: 
-    Start(String name) : IState(name) {}
+    InitOneWire(String name) : OneWireState(name) {}
     void execute();
 };
 
 class State2 : IState {
   public: 
     State2(String name) : IState(name) {}
-
     void execute();
 };
 
-void Start::execute() {
-  IState::execute();
+
+
+
+void InitOneWire::execute() {
+  OneWireState::execute();
+  pinMode(4, OUTPUT);
+  digitalWrite(4,HIGH);
+  //oneWire = new OneWire(5);
   SET_STATE(State2);
 }
 
@@ -55,7 +73,7 @@ void State2::execute() {
 
 IState *states[] = 
 {
-  DECLARESTATE(Start),
+  DECLARESTATE(InitOneWire),
   DECLARESTATE(State2)
 };
 
@@ -77,7 +95,7 @@ void setup() {
   Serial.begin(115200);
   Serial.println("setup");  
   WiFi.begin(ssid, pass);
-  SET_STATE(Start);
+  SET_STATE(InitOneWire);
 }
 
 
@@ -178,14 +196,8 @@ void loop() {
 // // The DallasTemperature library can do all this work for you!
 // // https://github.com/milesburton/Arduino-Temperature-Control-Library
 
-// #define GPIO5 D1
-// #define GPIO4 D2
-// OneWire  ds(GPIO5);  // a 4.7K resistor is necessary to 3.3v
 
 // void setup(void) {
-//   pinMode(GPIO4, OUTPUT);
-//   digitalWrite(GPIO4,HIGH);
-//   Serial.begin(115200);
 // }
 
 // void loop(void) {
