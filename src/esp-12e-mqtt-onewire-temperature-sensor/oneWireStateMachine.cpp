@@ -15,13 +15,11 @@ void InitOneWire::execute() {
     oneWireContext = new OneWireContext();
     oneWireContext->oneWire = new OneWire(5);
 
-    delay(250);
 
     if ( !oneWireContext->oneWire->search(oneWireContext->addr)) {
         Serial.println("No more addresses.");
         Serial.println();
         oneWireContext->oneWire->reset_search();
-        delay(250);
         SET_STATE(EndState);
     }
     else
