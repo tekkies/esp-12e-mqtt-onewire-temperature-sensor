@@ -11,6 +11,7 @@ class OneWireContext {
     byte addr[8];
     String successExitState;
     String failExitState;
+    byte type_s;
 };
 
 extern OneWireContext *oneWireContext;

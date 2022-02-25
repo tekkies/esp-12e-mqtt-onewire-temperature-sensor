@@ -181,37 +181,11 @@ void loop() {
 // void loop(void) {
 //   byte i;
 //   byte present = 0;
-//   byte type_s;
+//   
 
 //   float celsius, fahrenheit;
   
-//     Serial.println("No more addresses.");
-//     Serial.println();
-//     ds.reset_search();
-//     delay(250);
-//     return;
-//   }
-
-//   Serial.println();
  
-//   // the first ROM byte indicates which chip
-//   switch (addr[0]) {
-//     case 0x10:
-//       Serial.println("  Chip = DS18S20");  // or old DS1820
-//       type_s = 1;
-//       break;
-//     case 0x28:
-//       Serial.println("  Chip = DS18B20");
-//       type_s = 0;
-//       break;
-//     case 0x22:
-//       Serial.println("  Chip = DS1822");
-//       type_s = 0;
-//       break;
-//     default:
-//       Serial.println("Device is not a DS18x20 family device.");
-//       return;
-//   } 
 
 //   ds.reset();
 //   ds.select(addr);
