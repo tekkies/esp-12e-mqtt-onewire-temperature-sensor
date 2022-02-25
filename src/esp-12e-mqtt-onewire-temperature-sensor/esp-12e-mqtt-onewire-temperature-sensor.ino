@@ -5,43 +5,14 @@
 #include "config.h"
 #include "secrets.h"
 
-
+#include "stateMachine.h"
+#include "oneWireStateMachine.h"
 
 String json;
 
-class IState {
-  public: 
-    String stateName;
-    IState(String name) {
-      stateName = name;
-    }
-    virtual void execute() {
-      Serial.println(stateName);
-    }
-};
-
-
-IState* setState(String stateName, int sizeForTypeCheck);
-IState *state;
-
-#define SET_STATE(stateName) setState(#stateName, sizeof(stateName))
 
 
 
-
-class OneWireState : IState {
-    public:
-      OneWireState(String name) : IState(name) {}
-      void execute() {
-        IState::execute();
-      }  
-};
-
-class InitOneWire : OneWireState {
-  public: 
-    InitOneWire(String name) : OneWireState(name) {}
-    void execute();
-};
 
 class EndState : IState {
   public: 
