@@ -13,9 +13,6 @@ class IState {
     }
 };
 
-
-IState* setState(String stateName, int sizeForTypeCheck);
-
-#define SET_STATE(stateName) setState(#stateName, sizeof(stateName))
+IState* setState(String stateName);
 
 #endif

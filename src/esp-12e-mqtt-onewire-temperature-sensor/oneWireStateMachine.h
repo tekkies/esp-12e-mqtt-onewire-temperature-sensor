@@ -9,8 +9,11 @@ class OneWireContext {
     OneWire *oneWire;
     byte data[12];
     byte addr[8];
+    String successExitState;
+    String failExitState;
 };
 
+extern OneWireContext *oneWireContext;
 
 class InitOneWire : IState {
   public: 

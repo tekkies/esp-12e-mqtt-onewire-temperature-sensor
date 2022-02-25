@@ -6,7 +6,6 @@
 #include "secrets.h"
 
 #include "stateMachine.h"
-#include "states.h"
 #include "oneWireStateMachine.h"
 
 String json;
@@ -15,10 +14,25 @@ IState *state;
 
 
 
+class SuccessState : IState {
+  public: 
+    SuccessState(String name) : IState(name) {}
+    void execute();
+};
 
+void SuccessState::execute() {
+  IState::execute();
+  Serial.println("Sleeping for 5 seconds");
+  ESP.deepSleep(5e6); 
+}
 
+class FailState : IState {
+  public: 
+    FailState(String name) : IState(name) {}
+    void execute();
+};
 
-void EndState::execute() {
+void FailState::execute() {
   IState::execute();
   Serial.println("Sleeping for 5 seconds");
   ESP.deepSleep(5e6); 
@@ -30,10 +44,12 @@ IState *states[] =
 {
   DECLARESTATE(InitOneWire),
   DECLARESTATE(IdentifyOneWireDevice),
-  DECLARESTATE(EndState)
+  DECLARESTATE(SuccessState),
+  DECLARESTATE(FailState)
+
 };
 
-IState* setState(String stateName, int sizeForTypeCheck) {
+IState* setState(String stateName) {
   IState *candidateState=NULL;
   for(int i=0;i<sizeof(states);i++) {
     if(states[i]->stateName == stateName) {
@@ -46,12 +62,18 @@ IState* setState(String stateName, int sizeForTypeCheck) {
 }
 
 
+OneWireContext *oneWireContext;
 
 void setup() {
   Serial.begin(115200);
   Serial.println("setup");  
   WiFi.begin(ssid, pass);
-  SET_STATE(InitOneWire);
+
+  oneWireContext = new OneWireContext();
+  oneWireContext->successExitState = "SuccessState";
+  oneWireContext->failExitState = "FailState";
+
+  setState("InitOneWire");
 }
 
 
@@ -170,10 +192,6 @@ void loop() {
 //     return;
 //   }
 
-//   if (OneWire::crc8(addr, 7) != addr[7]) {
-//       Serial.println("CRC is not valid!");
-//       return;
-//   }
 //   Serial.println();
  
 //   // the first ROM byte indicates which chip
