@@ -15,7 +15,6 @@ class IState {
 
 
 IState* setState(String stateName, int sizeForTypeCheck);
-IState *state;
 
 #define SET_STATE(stateName) setState(#stateName, sizeof(stateName))
 

@@ -6,31 +6,17 @@
 #include "secrets.h"
 
 #include "stateMachine.h"
+#include "states.h"
 #include "oneWireStateMachine.h"
 
 String json;
+IState *state;
 
 
 
 
 
-class EndState : IState {
-  public: 
-    EndState(String name) : IState(name) {}
-    void execute();
-};
 
-
-
-OneWire *oneWire;  //Setup OneWire on GPIO5
-
-void InitOneWire::execute() {
-  OneWireState::execute();
-  pinMode(4, OUTPUT);
-  digitalWrite(4,HIGH);
-  oneWire = new OneWire(5);
-  SET_STATE(EndState);
-}
 
 void EndState::execute() {
   IState::execute();
@@ -40,7 +26,6 @@ void EndState::execute() {
 
 
 #define DECLARESTATE(aState) (IState*)(new aState(#aState))
-
 IState *states[] = 
 {
   DECLARESTATE(InitOneWire),
