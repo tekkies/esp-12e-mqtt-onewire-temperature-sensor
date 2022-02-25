@@ -45,7 +45,9 @@ IState *states[] =
   DECLARESTATE(InitOneWire),
   DECLARESTATE(IdentifyOneWireDevice),
   DECLARESTATE(SuccessState),
-  DECLARESTATE(FailState)
+  DECLARESTATE(FailState),
+  DECLARESTATE(DelayState),
+  DECLARESTATE(ReadTemperature)
 
 };
 

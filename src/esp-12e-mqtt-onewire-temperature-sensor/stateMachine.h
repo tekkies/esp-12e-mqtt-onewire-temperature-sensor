@@ -11,6 +11,23 @@ class IState {
     virtual void execute() {
       Serial.println(stateName);
     }
+    
+    /*virtual char*[] validExitStates() {
+      char *colour[4] = { "Blue", "Red",
+                             "Orange", "Yellow" };
+      char*[] a = color;                    
+      return colour;
+    }*/
+};
+
+class DelayState : IState {
+  private:
+    int endMs;
+    String exitState;
+  public: 
+    DelayState(String name) : IState(name) {}
+    void execute();
+    void reset(int ms, String nextState);
 };
 
 IState* setState(String stateName);

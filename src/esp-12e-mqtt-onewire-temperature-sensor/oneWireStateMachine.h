@@ -28,6 +28,12 @@ class IdentifyOneWireDevice : IState {
     void execute();
 };
 
+class ReadTemperature : IState {
+  public: 
+    ReadTemperature(String name) : IState(name) {}
+    void execute();
+};
+
 
 #endif
 

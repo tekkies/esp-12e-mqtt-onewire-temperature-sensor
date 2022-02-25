@@ -45,7 +45,7 @@ void IdentifyOneWireDevice::execute() {
   // the first ROM byte indicates which chip
   switch (oneWireContext->addr[0]) {
     case 0x10:
-      Serial.println("  Chip = DS18S20");  // or old DS1820
+      Serial.println("  Chip = DS18S20/DS1820");
       oneWireContext->type_s = 1;
       break;
     case 0x28:
@@ -58,11 +58,20 @@ void IdentifyOneWireDevice::execute() {
       break;
     default:
       Serial.println("Device is not a DS18x20 family device.");
-      return;
+       setState(oneWireContext->failExitState);
+       return;
   } 
 
 
+   oneWireContext->oneWire->reset();
+   oneWireContext->oneWire->select(oneWireContext->addr);
+   oneWireContext->oneWire->write(0x44, 1);        // start conversion, with parasite power on at the end
 
+   DelayState* delayState = (DelayState*)setState("DelayState");
+   delayState->reset(1000, "ReadTemperature");
+   
+}
 
-   setState(oneWireContext->successExitState);
+void ReadTemperature::execute() {
+    setState(oneWireContext->successExitState);
 }
