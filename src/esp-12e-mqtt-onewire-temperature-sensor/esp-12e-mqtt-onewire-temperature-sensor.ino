@@ -43,9 +43,9 @@ class InitOneWire : OneWireState {
     void execute();
 };
 
-class State2 : IState {
+class EndState : IState {
   public: 
-    State2(String name) : IState(name) {}
+    EndState(String name) : IState(name) {}
     void execute();
 };
 
@@ -58,10 +58,10 @@ void InitOneWire::execute() {
   pinMode(4, OUTPUT);
   digitalWrite(4,HIGH);
   oneWire = new OneWire(5);
-  SET_STATE(State2);
+  SET_STATE(EndState);
 }
 
-void State2::execute() {
+void EndState::execute() {
   IState::execute();
   Serial.println("Sleeping for 5 seconds");
   ESP.deepSleep(5e6); 
@@ -73,7 +73,7 @@ void State2::execute() {
 IState *states[] = 
 {
   DECLARESTATE(InitOneWire),
-  DECLARESTATE(State2)
+  DECLARESTATE(EndState)
 };
 
 IState* setState(String stateName, int sizeForTypeCheck) {
