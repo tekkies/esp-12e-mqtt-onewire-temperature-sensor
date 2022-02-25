@@ -29,11 +29,12 @@ void EndState::execute() {
 IState *states[] = 
 {
   DECLARESTATE(InitOneWire),
+  DECLARESTATE(IdentifyOneWireDevice),
   DECLARESTATE(EndState)
 };
 
 IState* setState(String stateName, int sizeForTypeCheck) {
-  IState *candidateState;
+  IState *candidateState=NULL;
   for(int i=0;i<sizeof(states);i++) {
     if(states[i]->stateName == stateName) {
       candidateState = states[i];
