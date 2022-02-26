@@ -129,6 +129,7 @@ void IdentifyOneWireDevice::execute() {
     Serial.print("  Temperature = ");
     Serial.print(celsius);
     Serial.print(" Celsius, ");
+    oneWireContext->callback("test", celsius);
     Serial.print(fahrenheit);
     Serial.println(" Fahrenheit");
     setState("OneWireSearch");

@@ -52,6 +52,13 @@ IState *states[] =
 };
 
 
+void temperatureCallback(String address, float temperature) {
+    Serial.print("Callback: address=");
+    Serial.print(address);
+    Serial.print(" temperature=");
+    Serial.println(temperature);
+}
+
 
 void setup() {
   Serial.begin(115200);
@@ -61,8 +68,12 @@ void setup() {
   oneWireContext = new OneWireContext();
   oneWireContext->successExitState = "SuccessState";
   oneWireContext->failExitState = "FailState";
+  oneWireContext->callback = temperatureCallback;
 
   setState("InitOneWire");
+
+  temperatureCallback("test", 80.0);
+
 }
 
 
