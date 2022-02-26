@@ -54,6 +54,7 @@ IState *states[] =
 
 void temperatureCallback(byte address[], float temperature) {
 
+    Serial.prinln("");
     Serial.print("Callback: address=");
 
     //https://stackoverflow.com/a/14050569/270155

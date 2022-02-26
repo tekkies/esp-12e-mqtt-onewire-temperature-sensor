@@ -87,21 +87,20 @@ void WaitForTemperature::execute() {
     oneWireContext->oneWire->select(oneWireContext->addr);    
     oneWireContext->oneWire->write(0xBE);         // Read Scratchpad
 
-    Serial.println("");
-    Serial.print("  Data = ");
-    Serial.print(present, HEX);
-    Serial.print(" ");
+    // Serial.println("");
+    // Serial.print("  Data = ");
+    // Serial.print(present, HEX);
+    // Serial.print(" ");
     byte data[12];
     for ( int i = 0; i < 9; i++) {           // we need 9 bytes
       data[i] = oneWireContext->oneWire->read();
-      Serial.print(data[i], HEX);
-      Serial.print(" ");
+      // Serial.print(data[i], HEX);
+      // Serial.print(" ");
     }
 
-
-    Serial.print(" CRC=");
-    Serial.print(OneWire::crc8(data, 8), HEX);
-    Serial.println();
+    // Serial.print(" CRC=");
+    // Serial.print(OneWire::crc8(data, 8), HEX);
+    // Serial.println();
 
 
     // Convert the data to actual temperature
@@ -124,13 +123,7 @@ void WaitForTemperature::execute() {
       //// default is 12 bit resolution, 750 ms conversion time
     }
     float celsius = (float)raw / 16.0;
-    float fahrenheit = celsius * 1.8 + 32.0;
-    Serial.print("  Temperature = ");
-    Serial.print(celsius);
-    Serial.print(" Celsius, ");
     oneWireContext->callback(oneWireContext->addr, celsius);
-    Serial.print(fahrenheit);
-    Serial.println(" Fahrenheit");
     setState("OneWireSearch");
   } else {
     if(millis() > oneWireContext->conversionTimeout) {
