@@ -7,11 +7,12 @@
 class OneWireContext {
   public:
     OneWire *oneWire;
-    byte addr[8];
     String successExitState;
     String failExitState;
+    byte addr[8];
     byte type_s;
     int conversionTimeout;
+    void (*callback)(byte address[], float temperature);
 };
 
 extern OneWireContext *oneWireContext;
@@ -19,6 +20,12 @@ extern OneWireContext *oneWireContext;
 class InitOneWire : IState {
   public: 
     InitOneWire(String name) : IState(name) {}
+    void execute();
+};
+
+class OneWireSearch : IState {
+  public: 
+    OneWireSearch(String name) : IState(name) {}
     void execute();
 };
 

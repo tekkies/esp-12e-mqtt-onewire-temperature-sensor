@@ -1,1 +1,4 @@
 const char ssid[] = "MyWifiNetwork";
+const char mqttServer[] = "test.mosquitto.org";
+const char mqttTopicBase[] = "/tekkies.co.uk/esp-12e/ds18x20/";
+const uint64_t  sleepSeconds = 5;

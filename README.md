@@ -1,13 +1,11 @@
-[![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
+[![Stability: Active](https://masterminds.github.io/stability/active.svg)](https://masterminds.github.io/stability/active.html)
 # esp-12e-mqtt-onewire-temperature-sensor
 Low power ESP8266 MQTT OneWire Temperature Sensor using DS18B20
 
 ## ToDo
-- [ ] Write the code
-- [ ] Connect WAKE to RESET for deep sleep wake
-- [ ] Increase gap between power and 1-wire headers
-- [ ] Trystoring config in flash - https://dalegi.com/2020/04/22/espflash-an-arduino-library-for-storing-data-in-the-esp-filesystem/
+- [ ] Board: Increase gap between power and 1-wire headers
 - [ ] Export state machine
+- [_] Parallelize DS18x20 coversion when multiple devices
 
 ![Installed](doc/photo-installed.jpg)
 

@@ -8,6 +8,14 @@
 #include "stateMachine.h"
 #include "oneWireStateMachine.h"
 
+
+const char version[] = "1.0.0";
+
+
+ADC_MODE(ADC_VCC);
+
+WiFiClient net;
+MQTTClient client(1024);
 String json;
 
 
@@ -19,24 +27,64 @@ class SuccessState : IState {
     void execute();
 };
 
-void SuccessState::execute() {
-  IState::execute();
-  Serial.println("Sleeping for 5 seconds");
-  ESP.deepSleep(5e6); 
-}
-
 class FailState : IState {
   public: 
     FailState(String name) : IState(name) {}
     void execute();
 };
 
-void FailState::execute() {
+class PublishMqttState : IState {
+  public: 
+    PublishMqttState(String name) : IState(name) {}
+    void execute();
+};
+
+void SuccessState::execute() {
   IState::execute();
-  Serial.println("Sleeping for 5 seconds");
-  ESP.deepSleep(5e6); 
+  
+
+  ESP.deepSleep(sleepSeconds * 1e6); 
 }
 
+void FailState::execute() {
+  IState::execute();
+}
+
+
+void PublishMqttState::execute() {
+  Serial.print("w");
+  if(client.connected()) {
+
+    json += "\"mV\":";
+    json += ESP.getVcc();
+
+    json += ",\"build\":\"v";
+    json += version;
+    json += " ";
+    json += __DATE__;
+    json += " ";
+    json += __TIME__;
+    json += "\"";
+    
+    json += ",\"sleep\":";
+    json += sleepSeconds;
+
+    json += ",\"heap\":";
+    json += ESP.getFreeHeap();
+
+    json += "}";
+
+    Serial.println("");
+    Serial.println("Publish JSON");
+    Serial.println(json);
+
+    String mqttTopic = mqttTopicBase + WiFi.macAddress();
+    
+    client.publish(mqttTopic, json);
+    Serial.println("Published");
+    setState("SuccessState");
+  }
+}
 
 #define DECLARESTATE(aState) (IState*)(new aState(#aState))
 IState *states[] = 
@@ -47,28 +95,79 @@ IState *states[] =
   DECLARESTATE(FailState),
   DECLARESTATE(DelayState),
   DECLARESTATE(WaitForTemperature),
+  DECLARESTATE(OneWireSearch),
+  DECLARESTATE(PublishMqttState),
   NULL
 };
 
 
+void temperatureCallback(byte address[], float temperature) {
+
+    Serial.println("");
+    Serial.print("Callback: address=");
+
+    //https://stackoverflow.com/a/14050569/270155
+    char hexstr[201];
+    int i;
+    for (i=0; i<8; i++) {
+        sprintf(hexstr+i*2, "%02x", address[i]);
+    }
+    hexstr[i*2] = 0;
+
+    Serial.print(hexstr);
+    Serial.print(" temperature=");
+    Serial.println(temperature);
+
+
+    json += "\"" + String(hexstr) + "\":" + temperature + ",";
+
+
+}
+
+
+void messageReceived(String &topic, String &payload) {
+  Serial.println("incoming: " + topic + " - " + payload);
+ 
+  // Note: Do not use the client in the callback to publish, subscribe or
+  // unsubscribe as it may cause deadlocks when other things arrive while
+  // sending and receiving acknowledgments. Instead, change a global variable,
+  // or push to a queue and handle it in the loop after calling `client.loop()`.
+}
 
 void setup() {
+ 
+  json = "{";
   Serial.begin(115200);
   Serial.println("setup");  
+
   WiFi.begin(ssid, pass);
+  client.begin(mqttServer, net);
+  client.onMessage(messageReceived);
 
   oneWireContext = new OneWireContext();
-  oneWireContext->successExitState = "SuccessState";
-  oneWireContext->failExitState = "FailState";
+  oneWireContext->successExitState = "PublishMqttState";
+  oneWireContext->failExitState = "PublishMqttState";
+  oneWireContext->callback = temperatureCallback;
 
   setState("InitOneWire");
 }
 
 
-
-
 void loop() {
-  Serial.println("loop");  
+  //Serial.println(state->stateName);  
+  if(WiFi.status() == WL_CONNECTED) {
+    Serial.println("");
+    Serial.println("WiFi Connected");
+    if (!client.connected()) {
+      Serial.println("mqtt not connected");
+      client.connect("arduino", "public", "public");
+      //client.subscribe("/hello");
+      //client.unsubscribe("/hello");
+    } else {
+      Serial.println("mqtt is connected");
+    }
+  }
+  client.loop();
   state->execute();
 }
 
@@ -84,121 +183,20 @@ void loop() {
 // // https://github.com/256dpi/arduino-mqtt
 
 
-// WiFiClient net;
-// MQTTClient client;
 
-// unsigned long lastMillis = 0;
 
-// void connect() {
-//   Serial.print("checking wifi...");
-//   while (WiFi.status() != WL_CONNECTED) {
-//     Serial.print(".");
-//     delay(1000);
-//   }
 
-//   Serial.print("\nconnecting...");
-//   while (!client.connect("arduino", "public", "public")) {
-//     Serial.print(".");
-//     delay(1000);
-//   }
 
-//   Serial.println("\nconnected!");
-
-//   client.subscribe("/hello");
-//   // client.unsubscribe("/hello");
-// }
-
-// void messageReceived(String &topic, String &payload) {
-//   Serial.println("incoming: " + topic + " - " + payload);
-
-//   // Note: Do not use the client in the callback to publish, subscribe or
-//   // unsubscribe as it may cause deadlocks when other things arrive while
-//   // sending and receiving acknowledgments. Instead, change a global variable,
-//   // or push to a queue and handle it in the loop after calling `client.loop()`.
-// }
-
-// void setup() {
-
-//   // Note: Local domain names (e.g. "Computer.local" on OSX) are not supported
-//   // by Arduino. You need to set the IP address directly.
-//   client.begin("test.mosquitto.org", net);
-//   client.onMessage(messageReceived);
-
-//   connect();
-// }
 
 // void loop() {
-//   client.loop();
+//   
 //   delay(10);  // <- fixes some issues with WiFi stability
 
-//   if (!client.connected()) {
-//     connect();
-//   }
+
 
 //   // publish a message roughly every second.
 //   if (millis() - lastMillis > 1000) {
 //     lastMillis = millis();
 //     client.publish("/tekkies.co.uk/hello", "world");
 //   }
-// }
-
-
-
-
-
-
-
-
-
-
-
-// // Based on OneWire DS18S20, DS18B20, DS1822 Temperature Example
-
-
-
-// //
-// // http://www.pjrc.com/teensy/td_libs_OneWire.html
-// //
-// // The DallasTemperature library can do all this work for you!
-// // https://github.com/milesburton/Arduino-Temperature-Control-Library
-
-
-// void setup(void) {
-// }
-
-// void loop(void) {
-//   byte i;
-//   
-//   
-
-//   float celsius, fahrenheit;
-  
-
-
-//   // Convert the data to actual temperature
-//   // because the result is a 16 bit signed integer, it should
-//   // be stored to an "int16_t" type, which is always 16 bits
-//   // even when compiled on a 32 bit processor.
-//   int16_t raw = (data[1] << 8) | data[0];
-//   if (type_s) {
-//     raw = raw << 3; // 9 bit resolution default
-//     if (data[7] == 0x10) {
-//       // "count remain" gives full 12 bit resolution
-//       raw = (raw & 0xFFF0) + 12 - data[6];
-//     }
-//   } else {
-//     byte cfg = (data[4] & 0x60);
-//     // at lower res, the low bits are undefined, so let's zero them
-//     if (cfg == 0x00) raw = raw & ~7;  // 9 bit resolution, 93.75 ms
-//     else if (cfg == 0x20) raw = raw & ~3; // 10 bit res, 187.5 ms
-//     else if (cfg == 0x40) raw = raw & ~1; // 11 bit res, 375 ms
-//     //// default is 12 bit resolution, 750 ms conversion time
-//   }
-//   celsius = (float)raw / 16.0;
-//   fahrenheit = celsius * 1.8 + 32.0;
-//   Serial.print("  Temperature = ");
-//   Serial.print(celsius);
-//   Serial.print(" Celsius, ");
-//   Serial.print(fahrenheit);
-//   Serial.println(" Fahrenheit");
 // }
