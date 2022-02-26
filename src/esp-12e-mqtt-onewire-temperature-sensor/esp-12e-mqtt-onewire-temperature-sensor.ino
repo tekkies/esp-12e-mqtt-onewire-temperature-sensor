@@ -44,9 +44,6 @@ void SuccessState::execute() {
 
 void FailState::execute() {
   IState::execute();
-  if(client.connected()) {
-    client.publish("/tekkies.co.uk/state", state->stateName);
-  }
   Serial.println("Sleeping for 5 seconds");
   ESP.deepSleep(5e6); 
 }
@@ -69,9 +66,6 @@ void PublishMqttState::execute() {
     setState("SuccessState");
   }
 }
-
-
-
 
 #define DECLARESTATE(aState) (IState*)(new aState(#aState))
 IState *states[] = 
@@ -128,7 +122,7 @@ void setup() {
   Serial.println("setup");  
 
   WiFi.begin(ssid, pass);
-  client.begin("test.mosquitto.org", net);
+  client.begin(mqttServer, net);
   client.onMessage(messageReceived);
 
   oneWireContext = new OneWireContext();

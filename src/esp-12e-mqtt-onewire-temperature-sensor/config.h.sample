@@ -1,1 +1,3 @@
 const char ssid[] = "MyWifiNetwork";
+const char mqttServer[] = "test.mosquitto.org";
+const char mqttTopic[] = "/tekkies.co.uk/ds18x20";
