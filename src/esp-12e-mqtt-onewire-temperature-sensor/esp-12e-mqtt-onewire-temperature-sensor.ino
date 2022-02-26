@@ -15,7 +15,7 @@ const char version[] = "0.9.0";
 ADC_MODE(ADC_VCC);
 
 WiFiClient net;
-MQTTClient client;
+MQTTClient client(1024);
 String json;
 
 
@@ -42,14 +42,12 @@ class PublishMqttState : IState {
 void SuccessState::execute() {
   IState::execute();
   
-  Serial.println("Sleeping for 5 seconds");
-  ESP.deepSleep(5e6); 
+
+  ESP.deepSleep(sleepSeconds * 1e6); 
 }
 
 void FailState::execute() {
   IState::execute();
-  Serial.println("Sleeping for 5 seconds");
-  ESP.deepSleep(5e6); 
 }
 
 
@@ -66,7 +64,12 @@ void PublishMqttState::execute() {
     json += __DATE__;
     json += " ";
     json += __TIME__;
-    json += "\"}";
+    json += "\",";
+    
+    json += ",\"sleep\":";
+    json += sleepSeconds;
+
+    json += "}";
 
     Serial.println("");
     Serial.println("Publish JSON");
