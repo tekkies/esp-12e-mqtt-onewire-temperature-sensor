@@ -1,6 +1,7 @@
 #include <ESP8266WiFi.h>
 #include "stateMachine.h"
 
+
 IState *state=NULL;
 
 IState* setState(String stateName) {
@@ -36,9 +37,17 @@ void DelayState::reset(int ms, String nextState) {
     exitState = nextState;
 }
 
+#include "oneWireStateMachine.h"
+
 void DelayState::execute(){
     int remaining = endMs - millis();
+    Serial.print("  ready ");
+
+    Serial.print(oneWireContext->oneWire->read_bit());
+
     Serial.print("  remaining ");
+    
+
     Serial.println(remaining);
     if(remaining <= 0) {
         Serial.print("Delay complete - jumping to state ");
