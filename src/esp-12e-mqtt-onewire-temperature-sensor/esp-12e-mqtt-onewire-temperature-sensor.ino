@@ -21,23 +21,45 @@ class SuccessState : IState {
     void execute();
 };
 
-void SuccessState::execute() {
-  IState::execute();
-  Serial.println("Sleeping for 5 seconds");
-  ESP.deepSleep(5e6); 
-}
-
 class FailState : IState {
   public: 
     FailState(String name) : IState(name) {}
     void execute();
 };
 
-void FailState::execute() {
+class PublishMqttState : IState {
+  public: 
+    PublishMqttState(String name) : IState(name) {}
+    void execute();
+};
+
+void SuccessState::execute() {
   IState::execute();
+  
   Serial.println("Sleeping for 5 seconds");
   ESP.deepSleep(5e6); 
 }
+
+void FailState::execute() {
+  IState::execute();
+  if(client.connected()) {
+    client.publish("/tekkies.co.uk/state", state->stateName);
+  }
+  Serial.println("Sleeping for 5 seconds");
+  ESP.deepSleep(5e6); 
+}
+
+
+void PublishMqttState::execute() {
+  IState::execute();
+  Serial.print("w");
+  if(client.connected()) {
+    client.publish("/tekkies.co.uk/state", state->stateName);
+    setState("SuccessState");
+  }
+}
+
+
 
 
 #define DECLARESTATE(aState) (IState*)(new aState(#aState))
@@ -50,6 +72,7 @@ IState *states[] =
   DECLARESTATE(DelayState),
   DECLARESTATE(WaitForTemperature),
   DECLARESTATE(OneWireSearch),
+  DECLARESTATE(PublishMqttState),
   NULL
 };
 
@@ -83,41 +106,16 @@ void messageReceived(String &topic, String &payload) {
 }
 
 
-
-
-
-void connect() {
-  Serial.print("checking wifi...");
-  while (WiFi.status() != WL_CONNECTED) {
-    Serial.print(".");
-    delay(1000);
-  }
-
-  Serial.print("\nconnecting...");
-  while (!client.connect("arduino", "public", "public")) {
-    Serial.print(".");
-    delay(1000);
-  }
-
-  Serial.println("\nconnected!");
-
-  client.subscribe("/hello");
-  // client.unsubscribe("/hello");
-}
-
-
-
 void setup() {
   Serial.begin(115200);
   Serial.println("setup");  
   WiFi.begin(ssid, pass);
   client.begin("test.mosquitto.org", net);
   client.onMessage(messageReceived);
-  connect();
 
   oneWireContext = new OneWireContext();
-  oneWireContext->successExitState = "SuccessState";
-  oneWireContext->failExitState = "FailState";
+  oneWireContext->successExitState = "PublishMqttState";
+  oneWireContext->failExitState = "PublishMqttState";
   oneWireContext->callback = temperatureCallback;
 
   setState("InitOneWire");
@@ -128,12 +126,19 @@ void setup() {
 
 void loop() {
   //Serial.println(state->stateName);  
-  if (!client.connected()) {
-    connect();
+  if(WiFi.status() == WL_CONNECTED) {
+    Serial.print("WiFi Connected");
+    if (!client.connected()) {
+      Serial.print("mqtt not connected");
+      client.connect("arduino", "public", "public");
+      //client.subscribe("/hello");
+      //client.unsubscribe("/hello");
+    } else {
+      Serial.print("mqtt is connected");
+    }
   }
   client.loop();
   state->execute();
-  client.publish("/tekkies.co.uk/state", state->stateName);
 }
 
 
