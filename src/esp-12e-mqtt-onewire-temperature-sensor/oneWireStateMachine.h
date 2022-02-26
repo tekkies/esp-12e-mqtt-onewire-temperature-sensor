@@ -10,7 +10,6 @@ class OneWireContext {
     String successExitState;
     String failExitState;
     byte addr[8];
-    String addressString;
     byte type_s;
     int conversionTimeout;
     void (*callback)(byte address[], float temperature);

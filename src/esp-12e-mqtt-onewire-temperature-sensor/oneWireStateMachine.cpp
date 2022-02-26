@@ -17,14 +17,14 @@ void InitOneWire::execute() {
 
 void OneWireSearch::execute() {
     if ( !oneWireContext->oneWire->search(oneWireContext->addr)) {
-        Serial.println("No more addresses.");
-        Serial.println();
+        //Serial.println("No more addresses.");
+        //Serial.println();
         oneWireContext->oneWire->reset_search();
         setState(oneWireContext->failExitState);
     }
     else
     {
-        Serial.println("Found OneWire");
+        //Serial.println("Found OneWire");
         setState("IdentifyOneWireDevice");
     }
 }
@@ -34,14 +34,13 @@ void OneWireSearch::execute() {
 void IdentifyOneWireDevice::execute() {
     IState::execute();
     
-    Serial.print("  ROM =");
+    //Serial.print("  ROM =");
 
-    for(int i = 0; i < 8; i++) {
-        Serial.write(' ');
-        Serial.print(oneWireContext->addr[i], HEX);
-        oneWireContext->addressString += String(oneWireContext->addr[i]&0x000000ff, 16);
-    }
-    Serial.println("");
+    // for(int i = 0; i < 8; i++) {
+    //     Serial.write(' ');
+    //     Serial.print(oneWireContext->addr[i], HEX);
+    // }
+    // Serial.println("");
 
    if (OneWire::crc8(oneWireContext->addr, 7) != oneWireContext->addr[7]) {
        Serial.println("CRC is not valid!");
@@ -52,21 +51,21 @@ void IdentifyOneWireDevice::execute() {
   // the first ROM byte indicates which chip
   switch (oneWireContext->addr[0]) {
     case 0x10:
-      Serial.println("  Chip = DS18S20/DS1820");
+      //Serial.println("  Chip = DS18S20/DS1820");
       oneWireContext->type_s = 1;
       break;
     case 0x28:
-      Serial.println("  Chip = DS18B20");
+      //Serial.println("  Chip = DS18B20");
       oneWireContext->type_s = 0;
       break;
     case 0x22:
-      Serial.println("  Chip = DS1822");
+      //Serial.println("  Chip = DS1822");
       oneWireContext->type_s = 0;
       break;
     default:
       Serial.println("Device is not a DS18x20 family device.");
-       setState(oneWireContext->failExitState);
-       return;
+      setState(oneWireContext->failExitState);
+      return;
   } 
 
 
