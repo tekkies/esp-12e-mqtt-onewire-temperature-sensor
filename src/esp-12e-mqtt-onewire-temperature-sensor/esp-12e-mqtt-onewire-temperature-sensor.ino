@@ -9,7 +9,7 @@
 #include "oneWireStateMachine.h"
 
 
-const char version[] = "0.9.1";
+const char version[] = "1.0.0";
 
 
 ADC_MODE(ADC_VCC);
