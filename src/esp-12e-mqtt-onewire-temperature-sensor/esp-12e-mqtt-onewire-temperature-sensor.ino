@@ -9,7 +9,7 @@
 #include "oneWireStateMachine.h"
 
 
-const char version[] = "0.9.0";
+const char version[] = "0.9.1";
 
 
 ADC_MODE(ADC_VCC);
@@ -78,7 +78,9 @@ void PublishMqttState::execute() {
     Serial.println("Publish JSON");
     Serial.println(json);
 
-    client.publish(mqttTopicBase, json);
+    String mqttTopic = mqttTopicBase + WiFi.macAddress();
+    
+    client.publish(mqttTopic, json);
     Serial.println("Published");
     setState("SuccessState");
   }
