@@ -1,0 +1,6 @@
+[submodule "src/esp-12e-mqtt-onewire-temperature-sensor/src/OneWire"]
+	path = src/esp-12e-mqtt-onewire-temperature-sensor/src/OneWire
+	url = https://github.com/PaulStoffregen/OneWire.git
+[submodule "src/esp-12e-mqtt-onewire-temperature-sensor/src/arduino-mqtt"]
+	path = src/esp-12e-mqtt-onewire-temperature-sensor/src/arduino-mqtt
+	url = https://github.com/tekkies/arduino-mqtt.git
