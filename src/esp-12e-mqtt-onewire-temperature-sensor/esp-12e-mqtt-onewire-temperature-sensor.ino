@@ -168,35 +168,12 @@ void loop() {
 
 // void loop(void) {
 //   byte i;
-//   byte present = 0;
+//   
 //   
 
 //   float celsius, fahrenheit;
   
- 
 
-//   ds.reset();
-//   ds.select(addr);
-//   ds.write(0x44, 1);        // start conversion, with parasite power on at the end
-  
-//   delay(1000);     // maybe 750ms is enough, maybe not
-//   // we might do a ds.depower() here, but the reset will take care of it.
-  
-//   present = ds.reset();
-//   ds.select(addr);    
-//   ds.write(0xBE);         // Read Scratchpad
-
-//   Serial.print("  Data = ");
-//   Serial.print(present, HEX);
-//   Serial.print(" ");
-//   for ( i = 0; i < 9; i++) {           // we need 9 bytes
-//     data[i] = ds.read();
-//     Serial.print(data[i], HEX);
-//     Serial.print(" ");
-//   }
-//   Serial.print(" CRC=");
-//   Serial.print(OneWire::crc8(data, 8), HEX);
-//   Serial.println();
 
 //   // Convert the data to actual temperature
 //   // because the result is a 16 bit signed integer, it should

@@ -7,7 +7,6 @@
 class OneWireContext {
   public:
     OneWire *oneWire;
-    byte data[12];
     byte addr[8];
     String successExitState;
     String failExitState;
