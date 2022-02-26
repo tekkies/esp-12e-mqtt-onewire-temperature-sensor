@@ -46,7 +46,7 @@ IState *states[] =
   DECLARESTATE(SuccessState),
   DECLARESTATE(FailState),
   DECLARESTATE(DelayState),
-  DECLARESTATE(ReadTemperature),
+  DECLARESTATE(WaitForTemperature),
   NULL
 };
 

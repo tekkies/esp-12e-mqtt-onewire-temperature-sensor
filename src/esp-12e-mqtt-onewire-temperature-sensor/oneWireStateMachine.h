@@ -11,6 +11,7 @@ class OneWireContext {
     String successExitState;
     String failExitState;
     byte type_s;
+    int conversionTimeout;
 };
 
 extern OneWireContext *oneWireContext;
@@ -27,9 +28,9 @@ class IdentifyOneWireDevice : IState {
     void execute();
 };
 
-class ReadTemperature : IState {
+class WaitForTemperature : IState {
   public: 
-    ReadTemperature(String name) : IState(name) {}
+    WaitForTemperature(String name) : IState(name) {}
     void execute();
 };
 
