@@ -51,7 +51,6 @@ void FailState::execute() {
 
 
 void PublishMqttState::execute() {
-  IState::execute();
   Serial.print("w");
   if(client.connected()) {
     client.publish("/tekkies.co.uk/state", state->stateName);
