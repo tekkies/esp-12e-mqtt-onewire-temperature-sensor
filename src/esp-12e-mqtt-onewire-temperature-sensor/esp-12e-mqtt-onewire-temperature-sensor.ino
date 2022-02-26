@@ -59,6 +59,7 @@ void PublishMqttState::execute() {
 
     json += "\"mV\":";
     json += ESP.getVcc();
+
     json += ",\"build\":\"v";
     json += version;
     json += " ";
@@ -71,7 +72,7 @@ void PublishMqttState::execute() {
     Serial.println("Publish JSON");
     Serial.println(json);
 
-    client.publish("/tekkies.co.uk/state", json);
+    client.publish(mqttTopic, json);
     Serial.println("Published");
     setState("SuccessState");
   }
