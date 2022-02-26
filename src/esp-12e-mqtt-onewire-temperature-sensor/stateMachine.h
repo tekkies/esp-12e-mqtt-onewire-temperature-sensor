@@ -8,13 +8,17 @@ class IState {
     IState(String name) {
       stateName = name;
     }
-    virtual void execute() {
+      virtual void execute() {
       Serial.println(stateName);
     }
     
-    virtual const String* validExitStates() {
-     const String exitStates[] = {"abc", ""};
-     return exitStates;
+    virtual String* validExitStates() {
+      String exitStates[] = {"abc", ""};
+      return exitStates;
+      //String* exitStates = new String[2];
+      //exitStates[0] = "Test 1";
+      //exitStates[1] = "";
+      //return exitStates;
     }
 };
 
