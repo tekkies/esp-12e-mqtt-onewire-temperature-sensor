@@ -21,16 +21,23 @@ IState* setState(String stateName) {
     }
 
     if(state!=NULL) {
-        String* pExitStates = state->validExitStates();
-        //Serial.println("State Exit Check");
-        //String exitState = *pExitStates;
-        //Serial.println("Dereferenced");
-        // Serial.println((char*)pExitStates);
+        char **pExitStates = state->validExitStates();
+        Serial.print("State Exit Check:");
+        Serial.println(state->stateName);
 
+        if(pExitStates != NULL) {
+            Serial.println("setState:NOT NULL");
+            Serial.println(pExitStates[0]);
+        } else {
+            Serial.println("setState:NULL");
+        }
     }
     state = candidateState;
     return state;
 }
+
+
+
 
 void DelayState::reset(int ms, String nextState) {
     endMs = millis()+ms;
