@@ -47,6 +47,7 @@ IState *states[] =
   DECLARESTATE(FailState),
   DECLARESTATE(DelayState),
   DECLARESTATE(WaitForTemperature),
+  DECLARESTATE(OneWireSearch),
   NULL
 };
 
@@ -68,7 +69,7 @@ void setup() {
 
 
 void loop() {
-  Serial.println("loop");  
+  Serial.println(state->stateName);  
   state->execute();
 }
 

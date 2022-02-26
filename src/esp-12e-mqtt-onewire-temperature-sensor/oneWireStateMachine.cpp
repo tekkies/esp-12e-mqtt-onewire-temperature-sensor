@@ -12,7 +12,10 @@ void InitOneWire::execute() {
     pinMode(4, OUTPUT);
     digitalWrite(4,HIGH);
     oneWireContext->oneWire = new OneWire(5);
+    setState("OneWireSearch");
+}
 
+void OneWireSearch::execute() {
     if ( !oneWireContext->oneWire->search(oneWireContext->addr)) {
         Serial.println("No more addresses.");
         Serial.println();
@@ -25,6 +28,8 @@ void InitOneWire::execute() {
         setState("IdentifyOneWireDevice");
     }
 }
+
+
 
 void IdentifyOneWireDevice::execute() {
     IState::execute();
@@ -126,7 +131,7 @@ void IdentifyOneWireDevice::execute() {
     Serial.print(" Celsius, ");
     Serial.print(fahrenheit);
     Serial.println(" Fahrenheit");
-    setState(oneWireContext->successExitState);
+    setState("OneWireSearch");
   } else {
     if(millis() > oneWireContext->conversionTimeout) {
       setState(oneWireContext->failExitState);

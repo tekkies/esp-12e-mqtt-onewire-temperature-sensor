@@ -22,6 +22,12 @@ class InitOneWire : IState {
     void execute();
 };
 
+class OneWireSearch : IState {
+  public: 
+    OneWireSearch(String name) : IState(name) {}
+    void execute();
+};
+
 class IdentifyOneWireDevice : IState {
   public: 
     IdentifyOneWireDevice(String name) : IState(name) {}

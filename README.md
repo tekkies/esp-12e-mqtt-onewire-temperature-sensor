@@ -8,6 +8,7 @@ Low power ESP8266 MQTT OneWire Temperature Sensor using DS18B20
 - [ ] Increase gap between power and 1-wire headers
 - [ ] Trystoring config in flash - https://dalegi.com/2020/04/22/espflash-an-arduino-library-for-storing-data-in-the-esp-filesystem/
 - [ ] Export state machine
+- [_] Parallelize temperature ATOD
 
 ![Installed](doc/photo-installed.jpg)
 
