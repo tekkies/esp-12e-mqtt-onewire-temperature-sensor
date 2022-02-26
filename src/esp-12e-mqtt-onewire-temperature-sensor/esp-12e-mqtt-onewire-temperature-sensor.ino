@@ -56,9 +56,9 @@ void PublishMqttState::execute() {
   Serial.print("w");
   if(client.connected()) {
 
-    json += "\"Vcc\" :";
+    json += "\"mV\":";
     json += ESP.getVcc();
-    json += "}";
+    json += ",\"build\":\"__TIMESTAMP__ __DATE__ __TIME__\"}";
 
     Serial.println("");
     Serial.println("Publish JSON");
@@ -106,7 +106,7 @@ void temperatureCallback(byte address[], float temperature) {
     Serial.println(temperature);
 
 
-    json += "\"" + String(hexstr) + "\" :" + temperature + ",";
+    json += "\"" + String(hexstr) + "\":" + temperature + ",";
 
 
 }
