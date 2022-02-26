@@ -53,8 +53,18 @@ IState *states[] =
 
 
 void temperatureCallback(byte address[], float temperature) {
+
     Serial.print("Callback: address=");
-    //Serial.print(address);
+
+    //https://stackoverflow.com/a/14050569/270155
+    char hexstr[201];
+    int i;
+    for (i=0; i<8; i++) {
+        sprintf(hexstr+i*2, "%02x", address[i]);
+    }
+    hexstr[i*2] = 0;
+
+    Serial.print(hexstr);
     Serial.print(" temperature=");
     Serial.println(temperature);
 }
