@@ -8,6 +8,10 @@
 #include "stateMachine.h"
 #include "oneWireStateMachine.h"
 
+
+const char version[] = "0.9.0";
+
+
 ADC_MODE(ADC_VCC);
 
 WiFiClient net;
@@ -55,7 +59,13 @@ void PublishMqttState::execute() {
 
     json += "\"mV\":";
     json += ESP.getVcc();
-    json += ",\"build\":\"__TIMESTAMP__ __DATE__ __TIME__\"}";
+    json += ",\"build\":\"v";
+    json += version;
+    json += " ";
+    json += __DATE__;
+    json += " ";
+    json += __TIME__;
+    json += "\"}";
 
     Serial.println("");
     Serial.println("Publish JSON");
