@@ -9,7 +9,7 @@
 #include "oneWireStateMachine.h"
 
 
-const char version[] = "1.0.0";
+const char version[] = "1.1.0";
 
 
 ADC_MODE(ADC_VCC);
@@ -71,6 +71,9 @@ void PublishMqttState::execute() {
 
     json += ",\"heap\":";
     json += ESP.getFreeHeap();
+
+    json += ",\"rssi\":";
+    json += WiFi.RSSI();
 
     json += "}";
 
