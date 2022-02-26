@@ -64,10 +64,13 @@ void PublishMqttState::execute() {
     json += __DATE__;
     json += " ";
     json += __TIME__;
-    json += "\",";
+    json += "\"";
     
     json += ",\"sleep\":";
     json += sleepSeconds;
+
+    json += ",\"heap\":";
+    json += ESP.getFreeHeap();
 
     json += "}";
 
@@ -75,7 +78,7 @@ void PublishMqttState::execute() {
     Serial.println("Publish JSON");
     Serial.println(json);
 
-    client.publish(mqttTopic, json);
+    client.publish(mqttTopicBase, json);
     Serial.println("Published");
     setState("SuccessState");
   }
