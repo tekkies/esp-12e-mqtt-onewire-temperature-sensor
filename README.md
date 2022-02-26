@@ -9,6 +9,9 @@ Low power ESP8266 MQTT OneWire Temperature Sensor using DS18B20
 
 ![Installed](doc/photo-installed.jpg)
 
+![MQTT Explorer](doc/mqtt-explorer-screenshot.png)
+
+
 ## Circuit 
 ![Circuit](board/ESP-12E-OneWire-TinyCAD.png)
 
