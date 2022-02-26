@@ -8,6 +8,8 @@
 #include "stateMachine.h"
 #include "oneWireStateMachine.h"
 
+ADC_MODE(ADC_VCC);
+
 WiFiClient net;
 MQTTClient client;
 String json;
@@ -53,7 +55,17 @@ void FailState::execute() {
 void PublishMqttState::execute() {
   Serial.print("w");
   if(client.connected()) {
-    client.publish("/tekkies.co.uk/state", state->stateName);
+
+    json += "\"Vcc\" :";
+    json += ESP.getVcc();
+    json += "}";
+
+    Serial.println("");
+    Serial.println("Publish JSON");
+    Serial.println(json);
+
+    client.publish("/tekkies.co.uk/state", json);
+    Serial.println("Published");
     setState("SuccessState");
   }
 }
@@ -92,22 +104,29 @@ void temperatureCallback(byte address[], float temperature) {
     Serial.print(hexstr);
     Serial.print(" temperature=");
     Serial.println(temperature);
+
+
+    json += "\"" + String(hexstr) + "\" :" + temperature + ",";
+
+
 }
 
 
 void messageReceived(String &topic, String &payload) {
   Serial.println("incoming: " + topic + " - " + payload);
-
+ 
   // Note: Do not use the client in the callback to publish, subscribe or
   // unsubscribe as it may cause deadlocks when other things arrive while
   // sending and receiving acknowledgments. Instead, change a global variable,
   // or push to a queue and handle it in the loop after calling `client.loop()`.
 }
 
-
 void setup() {
+ 
+  json = "{";
   Serial.begin(115200);
   Serial.println("setup");  
+
   WiFi.begin(ssid, pass);
   client.begin("test.mosquitto.org", net);
   client.onMessage(messageReceived);
@@ -121,19 +140,18 @@ void setup() {
 }
 
 
-
-
 void loop() {
   //Serial.println(state->stateName);  
   if(WiFi.status() == WL_CONNECTED) {
-    Serial.print("WiFi Connected");
+    Serial.println("");
+    Serial.println("WiFi Connected");
     if (!client.connected()) {
-      Serial.print("mqtt not connected");
+      Serial.println("mqtt not connected");
       client.connect("arduino", "public", "public");
       //client.subscribe("/hello");
       //client.unsubscribe("/hello");
     } else {
-      Serial.print("mqtt is connected");
+      Serial.println("mqtt is connected");
     }
   }
   client.loop();
