@@ -5,7 +5,7 @@
 #include "oneWireStateMachine.h"
 
 
-
+OneWireContext *oneWireContext;
 
 void InitOneWire::execute() {
     IState::execute();
@@ -29,7 +29,7 @@ void InitOneWire::execute() {
 void IdentifyOneWireDevice::execute() {
     IState::execute();
     
-    Serial.print("ROM =");
+    Serial.print("  ROM =");
     for(int i = 0; i < 8; i++) {
         Serial.write(' ');
         Serial.print(oneWireContext->addr[i], HEX);

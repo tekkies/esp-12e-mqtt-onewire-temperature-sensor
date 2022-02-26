@@ -12,12 +12,10 @@ class IState {
       Serial.println(stateName);
     }
     
-    /*virtual char*[] validExitStates() {
-      char *colour[4] = { "Blue", "Red",
-                             "Orange", "Yellow" };
-      char*[] a = color;                    
-      return colour;
-    }*/
+    virtual const String* validExitStates() {
+     const String exitStates[] = {"abc", ""};
+     return exitStates;
+    }
 };
 
 class DelayState : IState {
@@ -31,5 +29,9 @@ class DelayState : IState {
 };
 
 IState* setState(String stateName);
+
+extern IState *state;
+extern IState *states[];
+
 
 #endif

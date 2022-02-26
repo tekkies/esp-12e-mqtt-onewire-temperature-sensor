@@ -9,7 +9,6 @@
 #include "oneWireStateMachine.h"
 
 String json;
-IState *state;
 
 
 
@@ -47,24 +46,11 @@ IState *states[] =
   DECLARESTATE(SuccessState),
   DECLARESTATE(FailState),
   DECLARESTATE(DelayState),
-  DECLARESTATE(ReadTemperature)
-
+  DECLARESTATE(ReadTemperature),
+  NULL
 };
 
-IState* setState(String stateName) {
-  IState *candidateState=NULL;
-  for(int i=0;i<sizeof(states);i++) {
-    if(states[i]->stateName == stateName) {
-      candidateState = states[i];
-      break;
-    }
-  }
-  state = candidateState;
-  return state;
-}
 
-
-OneWireContext *oneWireContext;
 
 void setup() {
   Serial.begin(115200);
