@@ -122,7 +122,7 @@ void temperatureCallback(byte address[], float temperature) {
     Serial.println(temperature);
 
 
-    json += "\"" + String(hexstr) + "\":" + temperature + ",";
+    json += "\"" + String(hexstr) + "\":{\"C\":" + temperature + "},";
 
 
 }
