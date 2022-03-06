@@ -5,23 +5,17 @@
 class IState {
   public: 
     String stateName;
-
-
-
-
-
-
     char **exitStates;
-    const char* a="Alpha";
-    const char* b="beta";
 
 
 
     IState(String name) {
       stateName = name;
       exitStates = new char*[4];
-      exitStates[0]=(char*)a;
-      exitStates[1]=(char*)b;
+      exitStates[0]="Charlie";
+      exitStates[1]="Delta";
+      exitStates[2]=NULL;
+
     }
     
     virtual void execute() {

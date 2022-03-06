@@ -104,7 +104,7 @@ IState *states[] =
 };
 
 
-void temperatureCallback(byte address[], float temperature) {
+void temperatureCallback(byte address[], float temperature, String sensorModel) {
 
     Serial.println("");
     Serial.print("Callback: address=");
@@ -122,7 +122,7 @@ void temperatureCallback(byte address[], float temperature) {
     Serial.println(temperature);
 
 
-    json += "\"" + String(hexstr) + "\":{\"C\":" + temperature + "},";
+    json += "\"" + String(hexstr) + "\":{\"C\":" + temperature + ",\"model\":\""+sensorModel+"\"},";
 
 
 }
