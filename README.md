@@ -6,6 +6,10 @@ Low power ESP8266 MQTT OneWire Temperature Sensor using DS18B20
 - [ ] Board: Increase gap between power and 1-wire headers
 - [ ] Export state machine
 - [_] Parallelize DS18x20 coversion when multiple devices
+- [_] ADC Calibration
+- [_] Map sensor voltage vs temperature
+     - DS18x2x are not rated at 2.5v (2xAA), but still give readings showinga few degrees higher.  Try to characterise this.
+
 
 ![Installed](doc/photo-installed.jpg)
 

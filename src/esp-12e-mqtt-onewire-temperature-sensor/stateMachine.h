@@ -5,21 +5,33 @@
 class IState {
   public: 
     String stateName;
+    char **exitStates;
+
+
+
     IState(String name) {
       stateName = name;
+      exitStates = new char*[4];
+      exitStates[0]="Charlie";
+      exitStates[1]="Delta";
+      exitStates[2]=NULL;
+
     }
-      virtual void execute() {
+    
+    virtual void execute() {
       Serial.println(stateName);
     }
     
-    virtual String* validExitStates() {
-      String exitStates[] = {"abc", ""};
-      return exitStates;
-      //String* exitStates = new String[2];
-      //exitStates[0] = "Test 1";
-      //exitStates[1] = "";
-      //return exitStates;
+    
+
+    char** validExitStates() {
+    if(exitStates == NULL) {
+      Serial.println("validExitStates:NULL");
+    } else {
+      Serial.println("validExitStates:NOT NULL");
     }
+    return exitStates;
+}
 };
 
 class DelayState : IState {

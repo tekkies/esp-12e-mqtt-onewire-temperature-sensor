@@ -51,15 +51,15 @@ void IdentifyOneWireDevice::execute() {
   // the first ROM byte indicates which chip
   switch (oneWireContext->addr[0]) {
     case 0x10:
-      //Serial.println("  Chip = DS18S20/DS1820");
+      oneWireContext->type = "DS18S20/DS1820";
       oneWireContext->type_s = 1;
       break;
     case 0x28:
-      //Serial.println("  Chip = DS18B20");
+      oneWireContext->type = "DS18B20";
       oneWireContext->type_s = 0;
       break;
     case 0x22:
-      //Serial.println("  Chip = DS1822");
+      oneWireContext->type = "DS1822";
       oneWireContext->type_s = 0;
       break;
     default:
@@ -122,7 +122,7 @@ void WaitForTemperature::execute() {
       //// default is 12 bit resolution, 750 ms conversion time
     }
     float celsius = (float)raw / 16.0;
-    oneWireContext->callback(oneWireContext->addr, celsius);
+    oneWireContext->callback(oneWireContext->addr, celsius, oneWireContext->type);
     setState("OneWireSearch");
   } else {
     if(millis() > oneWireContext->conversionTimeout) {

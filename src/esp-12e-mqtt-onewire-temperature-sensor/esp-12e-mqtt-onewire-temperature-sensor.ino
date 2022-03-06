@@ -9,7 +9,7 @@
 #include "oneWireStateMachine.h"
 
 
-const char version[] = "1.1.0";
+const char version[] = "1.2.0";
 
 
 ADC_MODE(ADC_VCC);
@@ -104,7 +104,7 @@ IState *states[] =
 };
 
 
-void temperatureCallback(byte address[], float temperature) {
+void temperatureCallback(byte address[], float temperature, String sensorModel) {
 
     Serial.println("");
     Serial.print("Callback: address=");
@@ -122,7 +122,7 @@ void temperatureCallback(byte address[], float temperature) {
     Serial.println(temperature);
 
 
-    json += "\"" + String(hexstr) + "\":" + temperature + ",";
+    json += "\"" + String(hexstr) + "\":{\"C\":" + temperature + ",\"model\":\""+sensorModel+"\"},";
 
 
 }

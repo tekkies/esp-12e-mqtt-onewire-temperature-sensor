@@ -11,8 +11,9 @@ class OneWireContext {
     String failExitState;
     byte addr[8];
     byte type_s;
+    String type;
     int conversionTimeout;
-    void (*callback)(byte address[], float temperature);
+    void (*callback)(byte address[], float temperature, String sensorModel);
 };
 
 extern OneWireContext *oneWireContext;
